@@ -13,27 +13,30 @@ class Detail extends StatelessWidget {
       body: new Column(
         children: <Widget>[
           Container(
-            color: Colors.green,
+            // color: Colors.green,
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(20),
             child: new Text(
               "${hospitalName}",
-              style: TextStyle(fontSize: 20.0),
+              style: TextStyle(fontSize: 25.0),
               textAlign: TextAlign.center,
             ),
           ),
           Container(
-            // height: 5,
-            width: double.infinity,
-            color: Colors.red,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
-            child: new Text(
-              "Contact Details",
-              style: TextStyle(fontSize: 10.0),
-              textAlign: TextAlign.start,
-            ),
-          ),
+              // height: 5,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              child: new Column(
+                children: [
+                  new Text(
+                    "Contact Details",
+                    style: TextStyle(fontSize: 20.0),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              )),
         ],
       ),
     );
