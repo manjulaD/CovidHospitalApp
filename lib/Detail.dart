@@ -28,10 +28,15 @@ class Detail extends StatelessWidget {
               color: Colors.red,
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent, width: 3.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                    ),
+              ),
               child: new Column(
                 children: [
                   new Text(
-                    "Contact Details",
+                    "Hospital Cordinator",
                     style: TextStyle(fontSize: 20.0),
                     textAlign: TextAlign.start,
                   ),
