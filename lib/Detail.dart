@@ -20,7 +20,8 @@ class Detail extends StatelessWidget {
               style: TextStyle(fontSize: 20.0),
               textAlign: TextAlign.center,
             ),
-          )
+          ),
+          new Text("Contact"),
         ],
       ),
     );
