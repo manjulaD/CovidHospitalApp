@@ -37,7 +37,17 @@ class Detail extends StatelessWidget {
                   ),
                   new Text(
                     "Dr. Abcd Efgh",
-                    style: TextStyle(fontSize: 10.0),
+                    style: TextStyle(fontSize: 15.0),
+                    textAlign: TextAlign.start,
+                  ),
+                  new Text(
+                    "0717904023",
+                    style: TextStyle(fontSize: 15.0),
+                    textAlign: TextAlign.start,
+                  ),
+                  new Text(
+                    "test@gmail.com",
+                    style: TextStyle(fontSize: 15.0),
                     textAlign: TextAlign.start,
                   ),
                 ],
