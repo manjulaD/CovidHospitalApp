@@ -12,7 +12,11 @@ class Detail extends StatelessWidget {
       ),
       body: new Column(
         children: <Widget>[
-          new Text("${hospitalName}", style: TextStyle(fontSize: 20.0)),
+          Container(
+            margin: EdgeInsets.all(30),
+            padding: EdgeInsets.all(20),
+            child: new Text("${hospitalName}", style: TextStyle(fontSize: 20.0)),
+          )
         ],
       ),
     );
