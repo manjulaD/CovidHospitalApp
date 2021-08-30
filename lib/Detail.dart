@@ -13,8 +13,8 @@ class Detail extends StatelessWidget {
       body: new Column(
         children: <Widget>[
           Container(
-            // margin: EdgeInsets.all(30),
-            // padding: EdgeInsets.all(20),
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             child: new Text(
               "${hospitalName}",
               style: TextStyle(fontSize: 20.0),
@@ -22,8 +22,9 @@ class Detail extends StatelessWidget {
             ),
           ),
           Container(
-            // margin: EdgeInsets.all(30),
-            // padding: EdgeInsets.all(20),
+            color: Color.red,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             child: new Text(
               "Contact Details",
               style: TextStyle(fontSize: 10.0),
