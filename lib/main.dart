@@ -19,7 +19,7 @@ class HomePageState extends State<HomePage> {
   List data;
 
   Future<String> getData() async {
-    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals"), headers: {
+    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/hosp1/required-instruments"), headers: {
       "Accept": "application/json",
       "Access-Control-Allow-Origin": "*", // Required for CORS support to work
 
