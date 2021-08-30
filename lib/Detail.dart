@@ -13,6 +13,7 @@ class Detail extends StatelessWidget {
       body: new Column(
         children: <Widget>[
           Container(
+            color: Colors.green,
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(20),
             child: new Text(
