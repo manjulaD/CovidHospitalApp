@@ -23,7 +23,7 @@ class Detail extends StatelessWidget {
             ),
           ),
           Container(
-            height: 5,
+            // height: 5,
             width: double.infinity,
             color: Colors.red,
             margin: EdgeInsets.all(20),
