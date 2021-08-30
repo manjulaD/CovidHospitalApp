@@ -20,6 +20,11 @@ class Detail extends StatelessWidget {
               style: TextStyle(fontSize: 20.0),
               textAlign: TextAlign.center,
             ),
+            child: new Text(
+              "Contact Details",
+              style: TextStyle(fontSize: 10.0),
+              textAlign: TextAlign.start,
+            ),
           ),
           Container(
             margin: EdgeInsets.all(30),
