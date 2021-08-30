@@ -12,10 +12,7 @@ class Detail extends StatelessWidget {
       ),
       body: new Column(
         children: <Widget>[
-          new Text(
-            "${hospitalName}",
-            textAlign: center,
-          ),
+          new Text("${hospitalName}", style: TextStyle(fontSize: 20.0)),
         ],
       ),
     );
