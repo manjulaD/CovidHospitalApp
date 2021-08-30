@@ -14,7 +14,7 @@ class Detail extends StatelessWidget {
         children: <Widget>[
           new Text(
             "${hospitalName}",
-            textAlign: Center,
+            textAlign: center,
           ),
         ],
       ),
