@@ -19,8 +19,11 @@ class HomePageState extends State<HomePage> {
   List data;
 
   Future<String> getData() async {
-    var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
-      "Accept": "application/json"
+    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals"), headers: {
+      "Accept": "application/json",
+      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+
+      "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
     });
 
     this.setState(() {
