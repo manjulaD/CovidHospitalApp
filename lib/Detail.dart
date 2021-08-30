@@ -22,7 +22,7 @@ class Detail extends StatelessWidget {
             ),
           ),
           Container(
-            color: Color.red,
+            color: Colors.red,
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(20),
             child: new Text(
