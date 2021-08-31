@@ -86,7 +86,7 @@ class Detail extends StatelessWidget {
           ),
           Container(
             // color: Colors.green,
-            margin: EdgeInsets.all(20),
+            margin: EdgeInsets.all(10),
             padding: EdgeInsets.all(10),
             width: double.infinity,
 
