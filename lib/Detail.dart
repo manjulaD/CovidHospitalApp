@@ -78,7 +78,26 @@ class Detail extends StatelessWidget {
               onPressed: () {
                 // Navigate back to first route when tapped.
               },
-              child: Text('Add Equipments'),
+              child: Text(
+                'Add Equipments',
+                style: TextStyle(fontSize: 25.0),
+              ),
+            ),
+          ),
+          Container(
+            // color: Colors.green,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
+            width: double.infinity,
+
+            child: ElevatedButton(
+              onPressed: () {
+                // Navigate back to first route when tapped.
+              },
+              child: Text(
+                'View Required Equipments',
+                style: TextStyle(fontSize: 25.0),
+              ),
             ),
           ),
         ],
