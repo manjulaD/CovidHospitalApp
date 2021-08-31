@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Detail extends StatelessWidget {
   final String hospitalName;
@@ -36,7 +37,7 @@ class Detail extends StatelessWidget {
               child: new Column(
                 children: [
                   new Text(
-                    "Hospital Cordinator",
+                    "Hospital Coordinator",
                     style: TextStyle(fontSize: 20.0),
                     textAlign: TextAlign.start,
                   ),
