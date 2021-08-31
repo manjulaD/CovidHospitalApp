@@ -96,7 +96,7 @@ class Detail extends StatelessWidget {
               },
               child: Text(
                 'View Required Equipments',
-                style: TextStyle(fontSize: 18.0),
+                style: TextStyle(fontSize: 25.0),
               ),
             ),
           ),
