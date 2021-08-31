@@ -56,10 +56,15 @@ class Detail extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  new Text(
-                    "test@gmail.com",
-                    style: TextStyle(fontSize: 15.0),
-                    textAlign: TextAlign.start,
+                  TextButton(
+                    onPressed: () {
+                      launch("mailto://test@gmail.com");
+                    },
+                    child: Text(
+                      "test@gmail.com",
+                      style: TextStyle(fontSize: 15.0),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ],
               )),
