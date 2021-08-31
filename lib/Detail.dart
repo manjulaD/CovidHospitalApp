@@ -68,6 +68,18 @@ class Detail extends StatelessWidget {
                   ),
                 ],
               )),
+          Container(
+            // color: Colors.green,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
+
+            child: ElevatedButton(
+              onPressed: () {
+                // Navigate back to first route when tapped.
+              },
+              child: Text('Add Equipments'),
+            ),
+          ),
         ],
       ),
     );
