@@ -70,8 +70,8 @@ class Detail extends StatelessWidget {
               )),
           Container(
             // color: Colors.green,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             width: double.infinity,
 
             child: ElevatedButton(
@@ -86,8 +86,8 @@ class Detail extends StatelessWidget {
           ),
           Container(
             // color: Colors.green,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             width: double.infinity,
 
             child: ElevatedButton(
@@ -96,7 +96,7 @@ class Detail extends StatelessWidget {
               },
               child: Text(
                 'View Required Equipments',
-                style: TextStyle(fontSize: 25.0),
+                style: TextStyle(fontSize: 18.0),
               ),
             ),
           ),
