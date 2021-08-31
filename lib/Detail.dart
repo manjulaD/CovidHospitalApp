@@ -46,11 +46,17 @@ class Detail extends StatelessWidget {
                     style: TextStyle(fontSize: 15.0),
                     textAlign: TextAlign.start,
                   ),
-                  new Text(
-                    "0717904023",
+                  TextButton(
+                    onPressed: () {
+                      launch("tel://0717904023"),
+                    },
+                    child: Text(
+                      "0717904023",
                     style: TextStyle(fontSize: 15.0),
                     textAlign: TextAlign.start,
+                    ),
                   ),
+                 
                   new Text(
                     "test@gmail.com",
                     style: TextStyle(fontSize: 15.0),
