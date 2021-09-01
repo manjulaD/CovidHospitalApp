@@ -69,7 +69,7 @@ class Detail extends StatelessWidget {
                 ],
               )),
           Container(
-            height: 30.0,
+            height: 50.0,
             margin: EdgeInsets.all(10),
             //padding: EdgeInsets.all(30),
             width: double.infinity,
@@ -85,7 +85,7 @@ class Detail extends StatelessWidget {
             ),
           ),
           Container(
-            height: 30.0,
+            height: 50.0,
             margin: EdgeInsets.all(10),
             //  padding: EdgeInsets.all(30),
             width: double.infinity,
