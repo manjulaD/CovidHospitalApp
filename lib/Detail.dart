@@ -71,7 +71,7 @@ class Detail extends StatelessWidget {
           Container(
             // color: Colors.green,
             margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
             width: double.infinity,
 
             child: ElevatedButton(
@@ -87,7 +87,7 @@ class Detail extends StatelessWidget {
           Container(
             // color: Colors.green,
             margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
             width: double.infinity,
 
             child: ElevatedButton(
