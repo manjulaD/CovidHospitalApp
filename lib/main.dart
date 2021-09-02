@@ -20,7 +20,8 @@ class HomePageState extends State<HomePage> {
 
   Future<String> getData() async {
     var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals"), headers: {
-      //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
+      "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept",
+      "Access-Control-Allow-Origin": "*"
     });
 
     this.setState(() {
