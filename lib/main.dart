@@ -22,7 +22,7 @@ class HomePageState extends State<HomePage> {
     var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals"), headers: {
       "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept",
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true
+      "Access-Control-Allow-Credentials": "true"
     });
 
     this.setState(() {
