@@ -92,7 +92,10 @@ class Detail extends StatelessWidget {
 
             child: ElevatedButton(
               onPressed: () {
-                // Navigate back to first route when tapped.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
+                );
               },
               child: Text(
                 'View Required Equipments',
