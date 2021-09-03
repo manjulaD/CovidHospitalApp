@@ -93,10 +93,10 @@ class Detail extends StatelessWidget {
 
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
+                // );
               },
               child: Text(
                 'View Required Equipments',
