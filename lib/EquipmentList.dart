@@ -38,28 +38,33 @@ class EquipmentState extends State<EquipmentList> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Listviews"), backgroundColor: Colors.blue),
+      appBar: new AppBar(title: new Text("Required Equipments"), backgroundColor: Colors.blue),
       body: new ListView.builder(
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40), // if you need this
-              side: BorderSide(
-                color: Colors.grey.withOpacity(0.2),
-                width: 1,
-              ),
-            ),
-            child: GestureDetector(
-              child: new Text(data[index]["name"]),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Detail(data[index]["name"])),
-                );
-              },
-            ),
+          return ListTile(
+            //leading: icon,
+            title: data[index]["name"],
+            //subtitle: "Urgent",
           );
+          // return Card(
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(40), // if you need this
+          //     side: BorderSide(
+          //       color: Colors.grey.withOpacity(0.2),
+          //       width: 1,
+          //     ),
+          //   ),
+          //   child: GestureDetector(
+          //     child: new Text(data[index]["name"]),
+          //     onTap: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => Detail(data[index]["name"])),
+          //       );
+          //     },
+          //   ),
+          // );
 
           //  );
         },
