@@ -7,11 +7,13 @@ import 'package:http/http.dart' as http;
 import 'Detail.dart';
 
 class EquipmentList extends StatefulWidget {
+  final String hospitalName;
+  EquipmentList(this.hospitalName);
   @override
-  HomePageState createState() => new HomePageState();
+  EquipmentState createState() => new EquipmentState();
 }
 
-class HomePageState extends State<EquipmentList> {
+class EquipmentState extends State<EquipmentList> {
   List data;
 
   Future<String> getData() async {
