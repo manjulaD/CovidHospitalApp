@@ -44,7 +44,7 @@ class EquipmentState extends State<EquipmentList> {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             //leading: icon,
-            title: data[index]["name"],
+            title: Text(data[index]["name"]),
             //subtitle: "Urgent",
           );
           // return Card(
