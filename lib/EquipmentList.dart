@@ -55,6 +55,7 @@ class EquipmentState extends State<EquipmentList> {
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
           return new Container(
+            color: Colors.blue,
             alignment: FractionalOffset.center,
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
