@@ -59,16 +59,15 @@ class EquipmentState extends State<EquipmentList> {
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-
-                new Text(
-                  equipments[index].urgency,
-                  style: new TextStyle(color: Color(0xFF84A2AF), fontWeight: FontWeight.bold),
+                Flexible(
+                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                ),
+                Flexible(
+                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
                 ),
 
-                new Text(
-                  equipments[index].quantity,
-                  style: new TextStyle(color: Color(0xFF84A2AF), fontWeight: FontWeight.bold),
+                Flexible(
+                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
                 ),
                 //onPressed: moveToRegister,
               ],
