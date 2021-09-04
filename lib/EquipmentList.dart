@@ -55,7 +55,7 @@ class EquipmentState extends State<EquipmentList> {
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
           return new Container(
-            margin: EdgeInsets.all(20),
+            margin: EdgeInsets.all(5),
             color: Colors.blue,
             alignment: FractionalOffset.center,
             child: new Row(
