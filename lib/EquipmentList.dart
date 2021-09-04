@@ -54,32 +54,21 @@ class EquipmentState extends State<EquipmentList> {
       body: new ListView.builder(
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 150,
-            child: Card(
-              color: Colors.orange,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 33,
-                  ),
-                  Expanded(
-                    flex: 66,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 50,
-                          child: Center(child: Text(equipments[index].name)),
-                        ),
-                        Expanded(flex: 25, child: Text(equipments[index].urgency)),
-                        Expanded(flex: 25, child: Text(equipments[index].quantity)),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
+          return new Container(
+          alignment: FractionalOffset.center,
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+             
+                new Text('Don\'t have an account?', style: new TextStyle(color: Color(0xFF2E3233))),
+            
+            
+                new Text('Register.', style: new TextStyle(color: Color(0xFF84A2AF), fontWeight: FontWeight.bold),),
+                //onPressed: moveToRegister,
+             
+            ],
+          ),
+        ),  
 
           // return Card(
           //   shape: RoundedRectangleBorder(
