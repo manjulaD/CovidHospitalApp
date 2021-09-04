@@ -23,7 +23,7 @@ class Equipment {
 
 class EquipmentState extends State<EquipmentList> {
   List data;
-  List<Equipment> equipments;
+  List<Equipment> equipments = [];
 
   Future<List<Equipment>> getData() async {
     var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
