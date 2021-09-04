@@ -62,9 +62,6 @@ class EquipmentState extends State<EquipmentList> {
                 children: [
                   Expanded(
                     flex: 33,
-                    child: Image.network(
-                      'https://picsum.photos/250?image=9',
-                    ),
                   ),
                   Expanded(
                     flex: 66,
