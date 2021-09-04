@@ -56,7 +56,6 @@ class EquipmentState extends State<EquipmentList> {
         itemBuilder: (BuildContext context, int index) {
           return new Container(
             margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
             color: Colors.blue,
             alignment: FractionalOffset.center,
             child: new Row(
