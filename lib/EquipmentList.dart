@@ -66,6 +66,7 @@ class EquipmentState extends State<EquipmentList> {
             return new Container(
               margin: EdgeInsets.all(5),
               color: Colors.blueAccent,
+              height: 20.0,
               alignment: FractionalOffset.center,
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
