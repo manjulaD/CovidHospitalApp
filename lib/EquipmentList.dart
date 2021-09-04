@@ -58,14 +58,14 @@ class EquipmentState extends State<EquipmentList> {
             return Row(
               children: <Widget>[
                 Expanded(child: Text("Equipment")),
-                Expanded(child: Text("Uggency")),
+                Expanded(child: Text("Urgency")),
                 Expanded(child: Text("Quantity")),
               ],
             );
           } else {
             return new Container(
               margin: EdgeInsets.all(5),
-              color: Colors.blue,
+              color: Colors.blueAccent,
               alignment: FractionalOffset.center,
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
