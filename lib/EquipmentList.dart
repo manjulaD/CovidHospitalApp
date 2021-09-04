@@ -55,20 +55,20 @@ class EquipmentState extends State<EquipmentList> {
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
           return new Container(
-          alignment: FractionalOffset.center,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-             
+            alignment: FractionalOffset.center,
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
                 new Text('Don\'t have an account?', style: new TextStyle(color: Color(0xFF2E3233))),
-            
-            
-                new Text('Register.', style: new TextStyle(color: Color(0xFF84A2AF), fontWeight: FontWeight.bold),),
+
+                new Text(
+                  'Register.',
+                  style: new TextStyle(color: Color(0xFF84A2AF), fontWeight: FontWeight.bold),
+                ),
                 //onPressed: moveToRegister,
-             
-            ],
-          ),
-        ),  
+              ],
+            ),
+          );
 
           // return Card(
           //   shape: RoundedRectangleBorder(
