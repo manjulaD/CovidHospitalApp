@@ -35,7 +35,7 @@ class EquipmentState extends State<EquipmentList> {
     });
 
     for (var i = 0; i < data.length; i++) {
-      equipments.add(new Equipment(data[i]["name"], data[i]["ispublic"], data[i]["code"]));
+      equipments.add(new Equipment(data[i]["name"], data[i]["id"], data[i]["code"]));
     }
     print(data[1]["name"]);
 
