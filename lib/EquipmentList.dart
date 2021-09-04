@@ -54,27 +54,37 @@ class EquipmentState extends State<EquipmentList> {
       body: new ListView.builder(
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
-          return new Container(
-            margin: EdgeInsets.all(5),
-            color: Colors.blue,
-            alignment: FractionalOffset.center,
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          if (index == 0) {
+            return Row(
               children: <Widget>[
-                Flexible(
-                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                ),
-                Flexible(
-                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                ),
-
-                Flexible(
-                  child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                ),
-                //onPressed: moveToRegister,
+                Expanded(child: Text("Equipment")),
+                Expanded(child: Text("Uggency")),
+                Expanded(child: Text("Quantity")),
               ],
-            ),
-          );
+            );
+          } else {
+            return new Container(
+              margin: EdgeInsets.all(5),
+              color: Colors.blue,
+              alignment: FractionalOffset.center,
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                  ),
+                  Flexible(
+                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                  ),
+
+                  Flexible(
+                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                  ),
+                  //onPressed: moveToRegister,
+                ],
+              ),
+            );
+          }
 
           // return Card(
           //   shape: RoundedRectangleBorder(
