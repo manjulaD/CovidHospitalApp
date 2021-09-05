@@ -24,6 +24,27 @@ class Equipment {
 class EquipmentState extends State<EquipmentList> {
   List data;
   List<Equipment> equipments = [];
+  ExamplePageState() {
+    _filter.addListener(() {
+      if (_filter.text.isEmpty) {
+        setState(() {
+          _searchText = "";
+          filteredEquipments = equipments;
+        });
+      } else {
+        setState(() {
+          _searchText = _filter.text;
+        });
+      }
+    });
+  }
+
+  //for search bar
+  final TextEditingController _filter = new TextEditingController();
+  String _searchText = "";
+  List<Equipment> filteredEquipments = new List();
+  Icon _searchIcon = new Icon(Icons.search);
+  Widget _appBarTitle = new Text('Search Example');
 
   Future<List<Equipment>> getData() async {
     var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
@@ -37,6 +58,7 @@ class EquipmentState extends State<EquipmentList> {
     for (var i = 0; i < data.length; i++) {
       equipments.add(new Equipment(data[i]["name"], data[i]["name"], data[i]["name"]));
     }
+    filteredEquipments = equipments;
     print(data[1]["name"]);
 
     return equipments;
@@ -47,12 +69,38 @@ class EquipmentState extends State<EquipmentList> {
     this.getData();
   }
 
+  void _searchPressed() {
+    setState(() {
+      if (this._searchIcon.icon == Icons.search) {
+        this._searchIcon = new Icon(Icons.close);
+        this._appBarTitle = new TextField(
+          controller: _filter,
+          decoration: new InputDecoration(prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
+        );
+      } else {
+        this._searchIcon = new Icon(Icons.search);
+        this._appBarTitle = new Text('Search Example');
+        filteredEquipments = equipments;
+        _filter.clear();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (!(_searchText.isEmpty)) {
+      List tempList = new List();
+      for (int i = 0; i < filteredEquipments.length; i++) {
+        if (filteredEquipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
+          tempList.add(filteredEquipments[i]);
+        }
+      }
+      filteredEquipments = tempList;
+    }
     return new Scaffold(
       appBar: new AppBar(title: new Text("Required Equipments"), backgroundColor: Colors.blue),
       body: new ListView.builder(
-        itemCount: equipments == null ? 0 : equipments.length,
+        itemCount: filteredEquipments == null ? 0 : filteredEquipments.length,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return new Container(
@@ -79,7 +127,7 @@ class EquipmentState extends State<EquipmentList> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Flexible(
-                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                    child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
                   ),
                   Flexible(
                     child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
@@ -119,3 +167,5 @@ class EquipmentState extends State<EquipmentList> {
     );
   }
 }
+
+///
