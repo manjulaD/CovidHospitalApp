@@ -116,23 +116,24 @@ class EquipmentState extends State<EquipmentList> {
       body: new ListView.builder(
         itemCount: filteredEquipments == null ? 0 : filteredEquipments.length,
         itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            return new Container(
-              margin: EdgeInsets.all(5),
-              color: Colors.blueAccent,
-              //decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-              height: 50.0,
-              alignment: FractionalOffset.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Flexible(child: Text("Equipment")),
-                  Flexible(child: Text("Urgency")),
-                  Flexible(child: Text("Quantity")),
-                ],
-              ),
-            );
-          } else {
+          // if (index == 0) {
+          //   return new Container(
+          //     margin: EdgeInsets.all(5),
+          //     color: Colors.blueAccent,
+          //     //decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+          //     height: 50.0,
+          //     alignment: FractionalOffset.center,
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //       children: <Widget>[
+          //         Flexible(child: Text("Equipment")),
+          //         Flexible(child: Text("Urgency")),
+          //         Flexible(child: Text("Quantity")),
+          //       ],
+          //     ),
+          //   );
+          // } else
+          {
             return new Container(
               margin: EdgeInsets.all(5),
 
