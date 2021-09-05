@@ -75,11 +75,11 @@ class EquipmentState extends State<EquipmentList> {
                     child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
                   ),
                   Flexible(
-                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                    child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
                   ),
 
                   Flexible(
-                    child: new Text(equipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                    child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
                   ),
                   //onPressed: moveToRegister,
                 ],
