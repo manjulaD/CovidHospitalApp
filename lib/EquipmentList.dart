@@ -24,7 +24,7 @@ class Equipment {
 class EquipmentState extends State<EquipmentList> {
   List data;
   List<Equipment> equipments = [];
-  ExamplePageState() {
+  EquipmentState() {
     _filter.addListener(() {
       if (_filter.text.isEmpty) {
         setState(() {
@@ -34,6 +34,7 @@ class EquipmentState extends State<EquipmentList> {
       } else {
         setState(() {
           _searchText = _filter.text;
+          print(_searchText);
         });
       }
     });
@@ -89,7 +90,6 @@ class EquipmentState extends State<EquipmentList> {
 
   @override
   Widget build(BuildContext context) {
-    print("pressed  :" + _searchText);
     if (!(_searchText.isEmpty)) {
       List tempList = [];
       for (int i = 0; i < filteredEquipments.length; i++) {
@@ -98,7 +98,6 @@ class EquipmentState extends State<EquipmentList> {
         }
       }
       filteredEquipments = tempList;
-      print("pressed  :" + _searchText);
     }
     return new Scaffold(
       appBar: new AppBar(
