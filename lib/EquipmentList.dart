@@ -43,7 +43,7 @@ class EquipmentState extends State<EquipmentList> {
   //for search bar
   final TextEditingController _filter = new TextEditingController();
   String _searchText = "";
-  List<Equipment> filteredEquipments = new List();
+  List<Equipment> filteredEquipments = [];
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('Search Example');
 
@@ -91,7 +91,7 @@ class EquipmentState extends State<EquipmentList> {
   @override
   Widget build(BuildContext context) {
     if (!(_searchText.isEmpty)) {
-      List tempList = [];
+      List<Equipment> tempList = [];
       for (int i = 0; i < filteredEquipments.length; i++) {
         if (filteredEquipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
           tempList.add(filteredEquipments[i]);
