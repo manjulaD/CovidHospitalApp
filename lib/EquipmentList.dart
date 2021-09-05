@@ -23,6 +23,12 @@ class Equipment {
 
 class EquipmentState extends State<EquipmentList> {
   List data;
+  //for search bar
+  final TextEditingController _filter = new TextEditingController();
+  String _searchText = "";
+  List<Equipment> filteredEquipments = [];
+  Icon _searchIcon = new Icon(Icons.search);
+  Widget _appBarTitle = new Text('Search Example');
   List<Equipment> equipments = [];
   EquipmentState() {
     _filter.addListener(() {
@@ -39,13 +45,6 @@ class EquipmentState extends State<EquipmentList> {
       }
     });
   }
-
-  //for search bar
-  final TextEditingController _filter = new TextEditingController();
-  String _searchText = "";
-  List<Equipment> filteredEquipments = [];
-  Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Search Example');
 
   Future<List<Equipment>> getData() async {
     var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
