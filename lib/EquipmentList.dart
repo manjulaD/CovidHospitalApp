@@ -62,9 +62,9 @@ class EquipmentState extends State<EquipmentList> {
               alignment: FractionalOffset.center,
               child: Row(
                 children: <Widget>[
-                  Expanded(child: Text("Equipment")),
-                  Expanded(child: Text("Urgency")),
-                  Expanded(child: Text("Quantity")),
+                  Flexible(child: Text("Equipment")),
+                  Flexible(child: Text("Urgency")),
+                  Flexible(child: Text("Quantity")),
                 ],
               ),
             );
