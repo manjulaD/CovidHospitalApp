@@ -97,6 +97,7 @@ class EquipmentState extends State<EquipmentList> {
         }
       }
       filteredEquipments = tempList;
+      print("pressed  :" + _searchText);
     }
     return new Scaffold(
       appBar: new AppBar(
