@@ -91,9 +91,9 @@ class EquipmentState extends State<EquipmentList> {
   Widget build(BuildContext context) {
     if (!(_searchText.isEmpty)) {
       List<Equipment> tempList = [];
-      for (int i = 0; i < filteredEquipments.length; i++) {
-        if (filteredEquipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
-          tempList.add(filteredEquipments[i]);
+      for (int i = 0; i < equipments.length; i++) {
+        if (equipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
+          tempList.add(equipments[i]);
         }
       }
       filteredEquipments = tempList;
