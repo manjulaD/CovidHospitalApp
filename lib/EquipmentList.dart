@@ -89,6 +89,7 @@ class EquipmentState extends State<EquipmentList> {
 
   @override
   Widget build(BuildContext context) {
+    print("pressed  :" + _searchText);
     if (!(_searchText.isEmpty)) {
       List tempList = [];
       for (int i = 0; i < filteredEquipments.length; i++) {
