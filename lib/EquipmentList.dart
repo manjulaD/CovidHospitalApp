@@ -98,7 +98,20 @@ class EquipmentState extends State<EquipmentList> {
       filteredEquipments = tempList;
     }
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Required Equipments"), backgroundColor: Colors.blue),
+      appBar: new AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: _searchIcon,
+            onPressed: () {
+              _searchPressed();
+            },
+            tooltip: "Search",
+          )
+        ],
+        title: _appBarTitle == null ? Text('Choose a Location') : _appBarTitle,
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: new ListView.builder(
         itemCount: filteredEquipments == null ? 0 : filteredEquipments.length,
         itemBuilder: (BuildContext context, int index) {
