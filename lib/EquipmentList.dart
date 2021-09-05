@@ -66,8 +66,8 @@ class EquipmentState extends State<EquipmentList> {
 
   @override
   void initState() {
-    // this.getData();
-    filteredEquipments = this.getData();
+    this.getData();
+    filteredEquipments = equipments;
   }
 
   void _searchPressed() {
