@@ -55,12 +55,18 @@ class EquipmentState extends State<EquipmentList> {
         itemCount: equipments == null ? 0 : equipments.length,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
-            return Row(
-              children: <Widget>[
-                Expanded(child: Text("Equipment")),
-                Expanded(child: Text("Urgency")),
-                Expanded(child: Text("Quantity")),
-              ],
+            return new Container(
+              margin: EdgeInsets.all(5),
+              color: Colors.blueAccent,
+              height: 50.0,
+              alignment: FractionalOffset.center,
+              child: Row(
+                children: <Widget>[
+                  Expanded(child: Text("Equipment")),
+                  Expanded(child: Text("Urgency")),
+                  Expanded(child: Text("Quantity")),
+                ],
+              ),
             );
           } else {
             return new Container(
