@@ -61,6 +61,7 @@ class EquipmentState extends State<EquipmentList> {
               height: 50.0,
               alignment: FractionalOffset.center,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Flexible(child: Text("Equipment")),
                   Flexible(child: Text("Urgency")),
