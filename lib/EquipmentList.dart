@@ -119,7 +119,7 @@ class EquipmentState extends State<EquipmentList> {
           if (index == 0) {
             return new Container(
               margin: EdgeInsets.all(5),
-              //color: Colors.blueAccent,
+              color: Colors.blueAccent,
               decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
               height: 50.0,
               alignment: FractionalOffset.center,
@@ -135,8 +135,9 @@ class EquipmentState extends State<EquipmentList> {
           } else {
             return new Container(
               margin: EdgeInsets.all(5),
-              color: Colors.blueAccent,
-              height: 65.0,
+
+              decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              // height: 65.0,
               alignment: FractionalOffset.center,
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
