@@ -66,7 +66,8 @@ class EquipmentState extends State<EquipmentList> {
 
   @override
   void initState() {
-    this.getData();
+    // this.getData();
+    filteredEquipments = this.getData();
   }
 
   void _searchPressed() {
@@ -79,7 +80,7 @@ class EquipmentState extends State<EquipmentList> {
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
-        this._appBarTitle = new Text('Search Example');
+        this._appBarTitle = new Text('Equipments List');
         filteredEquipments = equipments;
         _filter.clear();
       }
@@ -89,7 +90,7 @@ class EquipmentState extends State<EquipmentList> {
   @override
   Widget build(BuildContext context) {
     if (!(_searchText.isEmpty)) {
-      List tempList = new List();
+      List tempList = [];
       for (int i = 0; i < filteredEquipments.length; i++) {
         if (filteredEquipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
           tempList.add(filteredEquipments[i]);
