@@ -42,7 +42,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Equipment:",
+                "Urgency:",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +52,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Oxygen Tank",
+                "Very Urgent",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -64,7 +64,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Equipment:",
+                "Quantity:",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -74,7 +74,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Oxygen Tank",
+                "4",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
