@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'Detail.dart';
+import 'EquipmentDetails.dart';
 
 class EquipmentList extends StatefulWidget {
   final String hospitalName;
@@ -137,6 +137,10 @@ class EquipmentState extends State<EquipmentList> {
             return new GestureDetector(
               onTap: () {
                 print(filteredEquipments[index].name);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EquipmentDetails("")),
+                );
               },
               child: Container(
                 margin: EdgeInsets.all(5),
