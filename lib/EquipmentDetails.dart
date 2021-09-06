@@ -17,21 +17,21 @@ class EquipmentDetails extends StatelessWidget {
           Row(children: <Widget>[
             Container(
               // color: Colors.green,
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(5),
               child: new Text(
                 "Equipment:",
-                style: TextStyle(fontSize: 10.0),
+                style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
             ),
             Container(
               // color: Colors.green,
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(5),
               child: new Text(
                 "Oxygen Tank",
-                style: TextStyle(fontSize: 10.0),
+                style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
             ),
