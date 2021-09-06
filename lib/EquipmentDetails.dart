@@ -10,10 +10,32 @@ class EquipmentDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Hospital Details"),
+        title: new Text("Equipment Details"),
       ),
       body: new Column(
         children: <Widget>[
+          Row(children: <Widget>[
+            Container(
+              // color: Colors.green,
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              child: new Text(
+                "Equipment:",
+                style: TextStyle(fontSize: 25.0),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Container(
+              // color: Colors.green,
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              child: new Text(
+                "Oxygen Tank",
+                style: TextStyle(fontSize: 25.0),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ]),
           Container(
             // color: Colors.green,
             margin: EdgeInsets.all(20),
@@ -72,22 +94,6 @@ class EquipmentDetails extends StatelessWidget {
           Container(
             height: 50.0,
             margin: EdgeInsets.all(10),
-            //padding: EdgeInsets.all(30),
-            width: double.infinity,
-
-            child: ElevatedButton(
-              onPressed: () {
-                // Navigate back to first route when tapped.
-              },
-              child: Text(
-                'Add Equipments',
-                style: TextStyle(fontSize: 25.0),
-              ),
-            ),
-          ),
-          Container(
-            height: 50.0,
-            margin: EdgeInsets.all(10),
             //  padding: EdgeInsets.all(30),
             width: double.infinity,
 
@@ -99,7 +105,7 @@ class EquipmentDetails extends StatelessWidget {
                 );
               },
               child: Text(
-                'View Required Equipments',
+                'Edit',
                 style: TextStyle(fontSize: 25.0),
               ),
             ),
