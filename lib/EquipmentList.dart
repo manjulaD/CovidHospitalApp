@@ -134,32 +134,37 @@ class EquipmentState extends State<EquipmentList> {
           //   );
           // } else
           {
-            return new Container(
-              margin: EdgeInsets.all(5),
+            return new GestureDetector(
+              onTap: () {
+                print(filteredEquipments[index].name);
+              },
+              child: Container(
+                margin: EdgeInsets.all(5),
 
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blueAccent),
-                borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                      ),
+                ),
+
+                // height: 65.0,
+                alignment: FractionalOffset.center,
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
                     ),
-              ),
+                    Flexible(
+                      child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
+                    ),
 
-              // height: 65.0,
-              alignment: FractionalOffset.center,
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Flexible(
-                    child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                  ),
-                  Flexible(
-                    child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
-                  ),
-
-                  Flexible(
-                    child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
-                  ),
-                  //onPressed: moveToRegister,
-                ],
+                    Flexible(
+                      child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
+                    ),
+                    //onPressed: moveToRegister,
+                  ],
+                ),
               ),
             );
           }
