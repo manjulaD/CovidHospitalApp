@@ -21,7 +21,7 @@ class EquipmentDetails extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: new Text(
                 "Equipment:",
-                style: TextStyle(fontSize: 25.0),
+                style: TextStyle(fontSize: 10.0),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -31,7 +31,7 @@ class EquipmentDetails extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: new Text(
                 "Oxygen Tank",
-                style: TextStyle(fontSize: 25.0),
+                style: TextStyle(fontSize: 10.0),
                 textAlign: TextAlign.center,
               ),
             ),
