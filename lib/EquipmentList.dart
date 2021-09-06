@@ -137,7 +137,12 @@ class EquipmentState extends State<EquipmentList> {
             return new Container(
               margin: EdgeInsets.all(5),
 
-              decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                    ),
+              ),
+
               // height: 65.0,
               alignment: FractionalOffset.center,
               child: new Row(
