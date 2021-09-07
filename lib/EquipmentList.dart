@@ -154,8 +154,8 @@ class EquipmentState extends State<EquipmentList> {
 
                 // height: 65.0,
                 alignment: FractionalOffset.center,
-                child: new Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Flexible(
                       child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
