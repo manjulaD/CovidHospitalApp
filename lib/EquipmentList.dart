@@ -15,10 +15,11 @@ class EquipmentList extends StatefulWidget {
 
 class Equipment {
   final name;
-  final urgency;
-  final quantity;
+  final urgent;
+  final veryUrgent;
+  final regularNeeds;
 
-  Equipment(this.name, this.urgency, this.quantity);
+  Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
 }
 
 class EquipmentState extends State<EquipmentList> {
@@ -56,7 +57,7 @@ class EquipmentState extends State<EquipmentList> {
     });
 
     for (var i = 0; i < data.length; i++) {
-      equipments.add(new Equipment(data[i]["name"], data[i]["name"], data[i]["name"]));
+      equipments.add(new Equipment(data[i]["name"], data[i]["name"], data[i]["name"], data[i]["name"]));
     }
     filteredEquipments = equipments;
     print(data[1]["name"]);
@@ -153,8 +154,8 @@ class EquipmentState extends State<EquipmentList> {
 
                 // height: 65.0,
                 alignment: FractionalOffset.center,
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: new Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Flexible(
                       child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
