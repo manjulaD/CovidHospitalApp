@@ -127,6 +127,7 @@ class EquipmentState extends State<EquipmentList> {
                   );
                 },
                 child: Container(
+                    padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent),
@@ -153,18 +154,18 @@ class EquipmentState extends State<EquipmentList> {
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                             Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
-                            Text("3", style: new TextStyle(color: Colors.red, fontSize: 16.0)),
+                            Text("3", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                            Text("Urgent", style: new TextStyle(color: Colors.yellow, fontSize: 13.0)),
-                            Text("6", style: new TextStyle(color: Colors.yellow, fontSize: 16.0)),
+                            Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
+                            Text("6", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
 
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                             Text("Regular Needs", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
-                            Text("1", style: new TextStyle(color: Colors.green, fontSize: 16.0)),
+                            Text("1", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
                           //onPressed: moveToRegister,
                         ],
