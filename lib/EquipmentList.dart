@@ -29,7 +29,7 @@ class EquipmentState extends State<EquipmentList> {
   String _searchText = "";
   List<Equipment> filteredEquipments = [];
   Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Search Example');
+  Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
   EquipmentState() {
     _filter.addListener(() {
@@ -117,61 +117,55 @@ class EquipmentState extends State<EquipmentList> {
       body: new ListView.builder(
         itemCount: filteredEquipments == null ? 0 : filteredEquipments.length,
         itemBuilder: (BuildContext context, int index) {
-          // if (index == 0) {
-          //   return new Container(
-          //     margin: EdgeInsets.all(5),
-          //     color: Colors.blueAccent,
-          //     //decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-          //     height: 50.0,
-          //     alignment: FractionalOffset.center,
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: <Widget>[
-          //         Flexible(child: Text("Equipment")),
-          //         Flexible(child: Text("Urgency")),
-          //         Flexible(child: Text("Quantity")),
-          //       ],
-          //     ),
-          //   );
-          // } else
           {
             return new GestureDetector(
-              onTap: () {
-                print(filteredEquipments[index].name);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EquipmentDetails("")),
-                );
-              },
-              child: Container(
-                margin: EdgeInsets.all(5),
+                onTap: () {
+                  print(filteredEquipments[index].name);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EquipmentDetails("")),
+                  );
+                },
+                child: Container(
+                    margin: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                          ),
+                    ),
 
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blueAccent),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                    // height: 65.0,
+                    alignment: FractionalOffset.center,
+                    child: new Column(children: <Widget>[
+                      Container(
+                        // color: Colors.green,
+                        margin: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(20),
+                        child: new Text(
+                          "blah",
+                          style: TextStyle(fontSize: 25.0),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                ),
+                      Container(
+                        new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Flexible(
+                              child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                            ),
+                            Flexible(
+                              child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
+                            ),
 
-                // height: 65.0,
-                alignment: FractionalOffset.center,
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Flexible(
-                      child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                    ),
-                    Flexible(
-                      child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
-                    ),
-
-                    Flexible(
-                      child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
-                    ),
-                    //onPressed: moveToRegister,
-                  ],
-                ),
-              ),
-            );
+                            Flexible(
+                              child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
+                            ),
+                            //onPressed: moveToRegister,
+                          ],
+                        ),
+                      ),
+                    ])));
           }
 
           // return Card(
