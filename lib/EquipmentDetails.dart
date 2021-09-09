@@ -107,7 +107,7 @@ class EquipmentDetails extends StatelessWidget {
               height: 50.0,
               margin: EdgeInsets.all(10),
               //  padding: EdgeInsets.all(30),
-              width: double.infinity,
+              // width: double.infinity,
 
               child: ElevatedButton(
                 onPressed: () {
@@ -126,7 +126,7 @@ class EquipmentDetails extends StatelessWidget {
               height: 50.0,
               margin: EdgeInsets.all(10),
               //  padding: EdgeInsets.all(30),
-              width: double.infinity,
+              // width: double.infinity,
 
               child: ElevatedButton(
                 onPressed: () {
