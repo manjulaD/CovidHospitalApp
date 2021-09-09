@@ -147,23 +147,21 @@ class EquipmentState extends State<EquipmentList> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Container(
-                        new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Flexible(
-                              child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
-                            ),
-                            Flexible(
-                              child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
-                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Flexible(
+                            child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                          ),
+                          Flexible(
+                            child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
+                          ),
 
-                            Flexible(
-                              child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
-                            ),
-                            //onPressed: moveToRegister,
-                          ],
-                        ),
+                          Flexible(
+                            child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
+                          ),
+                          //onPressed: moveToRegister,
+                        ],
                       ),
                     ])));
           }
