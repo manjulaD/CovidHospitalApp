@@ -42,7 +42,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Urgency:",
+                "Very Urgent:",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +52,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Very Urgent",
+                "3",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -64,7 +64,29 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Quantity:",
+                "Urgent:",
+                style: TextStyle(fontSize: 20.0),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Container(
+              // color: Colors.green,
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(5),
+              child: new Text(
+                "4",
+                style: TextStyle(fontSize: 20.0),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Container(
+              // color: Colors.green,
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(5),
+              child: new Text(
+                "Regular Needs:",
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
