@@ -139,10 +139,10 @@ class EquipmentState extends State<EquipmentList> {
                     child: new Column(children: <Widget>[
                       Container(
                         // color: Colors.green,
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(20),
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: new Text(
-                          "blah",
+                          filteredEquipments[index].name,
                           style: TextStyle(fontSize: 25.0),
                           textAlign: TextAlign.center,
                         ),
@@ -151,14 +151,14 @@ class EquipmentState extends State<EquipmentList> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Flexible(
-                            child: new Text(filteredEquipments[index].name, style: new TextStyle(color: Color(0xFF2E3233))),
+                            child: new Text("Very Urgent", style: new TextStyle(color: Colors.red)),
                           ),
                           Flexible(
-                            child: new Text("Urgent", style: new TextStyle(color: Color(0xFF2E3233))),
+                            child: new Text("Urgent", style: new TextStyle(color: Colors.orange)),
                           ),
 
                           Flexible(
-                            child: new Text("7", style: new TextStyle(color: Color(0xFF2E3233))),
+                            child: new Text("Regular Needs", style: new TextStyle(color: Colors.green)),
                           ),
                           //onPressed: moveToRegister,
                         ],
