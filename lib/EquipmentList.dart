@@ -152,19 +152,19 @@ class EquipmentState extends State<EquipmentList> {
                         children: <Widget>[
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                            Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 10.0)),
-                            Text("3", style: new TextStyle(color: Colors.red, fontSize: 10.0)),
+                            Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 20.0)),
+                            Text("3", style: new TextStyle(color: Colors.red, fontSize: 20.0)),
                           ])),
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                            Text("Urgent", style: new TextStyle(color: Colors.yellow, fontSize: 10.0)),
-                            Text("6", style: new TextStyle(color: Colors.yellow, fontSize: 10.0)),
+                            Text("Urgent", style: new TextStyle(color: Colors.yellow, fontSize: 20.0)),
+                            Text("6", style: new TextStyle(color: Colors.yellow, fontSize: 20.0)),
                           ])),
 
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                            Text("Regular Needs", style: new TextStyle(color: Colors.green, fontSize: 10.0)),
-                            Text("1", style: new TextStyle(color: Colors.green, fontSize: 10.0)),
+                            Text("Regular Needs", style: new TextStyle(color: Colors.green, fontSize: 20.0)),
+                            Text("1", style: new TextStyle(color: Colors.green, fontSize: 20.0)),
                           ])),
                           //onPressed: moveToRegister,
                         ],
