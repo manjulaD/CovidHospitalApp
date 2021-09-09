@@ -151,8 +151,10 @@ class EquipmentState extends State<EquipmentList> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Flexible(
-                            child: new Text("Very Urgent", style: new TextStyle(color: Colors.red)),
-                          ),
+                              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                            Text("Very Urgent", style: new TextStyle(color: Colors.red)),
+                            Text("3"),
+                          ])),
                           Flexible(
                             child: new Text("Urgent", style: new TextStyle(color: Colors.orange)),
                           ),
