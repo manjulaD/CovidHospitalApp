@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'EquipmentList.dart';
-import 'EditEquipments.dart';
+import 'Detail.dart';
 
 class EquipmentDetails extends StatelessWidget {
   final String hospitalName;
@@ -114,7 +114,7 @@ class EquipmentDetails extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditEquipments(hospitalName)),
+                    MaterialPageRoute(builder: (context) => Detail(hospitalName)),
                   );
                 },
                 child: Text(
