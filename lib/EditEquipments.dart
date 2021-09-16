@@ -133,7 +133,7 @@ class EquipmentDetails extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
+                    // MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
                   );
                 },
                 child: Text(
