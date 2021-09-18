@@ -3,9 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'EquipmentList.dart';
 import 'Detail.dart';
 
-class EquipmentDetails extends StatelessWidget {
+class EditEquipments extends StatelessWidget {
   final String hospitalName;
-  EquipmentDetails(this.hospitalName);
+  EditEquipments(this.hospitalName);
 
   @override
   Widget build(BuildContext context) {
