@@ -19,15 +19,16 @@ class HomePageState extends State<HomePage> {
   List data;
 
   Future<String> getData() async {
-    var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
+    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/"), headers: {
       //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
+      //https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/
     });
 
     this.setState(() {
       data = json.decode(response.body);
     });
 
-    print(data[1]["name"]);
+    print(data[1]["hospitalName"]);
 
     return "Success!";
   }
@@ -53,11 +54,11 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             child: GestureDetector(
-              child: new Text(data[index]["name"]),
+              child: new Text(data[index]["hospitalName"]),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Detail(data[index]["name"])),
+                  MaterialPageRoute(builder: (context) => Detail(data[index]["hospitalName"])),
                 );
               },
             ),

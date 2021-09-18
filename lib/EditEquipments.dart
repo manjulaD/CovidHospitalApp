@@ -11,7 +11,7 @@ class EditEquipments extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Equipment Details"),
+        title: new Text("Edit Equipment"),
       ),
       body: new Column(
         children: <Widget>[
