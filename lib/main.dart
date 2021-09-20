@@ -29,7 +29,7 @@ class HomePageState extends State<HomePage> {
       data = json.decode(response.body);
     });
 
-    print(data[1]["name"]);
+    print(data[1]["hospitalName"]);
 
     return "Success!";
   }
@@ -55,11 +55,11 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             child: GestureDetector(
-              child: new Text(data[index]["name"]),
+              child: new Text(data[index]["hospitalName"]),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Detail(data[index]["name"])),
+                  MaterialPageRoute(builder: (context) => Detail(data[index]["hospitalName"])),
                 );
               },
             ),
