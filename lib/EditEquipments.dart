@@ -7,6 +7,8 @@ class EditEquipments extends StatelessWidget {
   final String hospitalName;
   EditEquipments(this.hospitalName);
 
+  String dropdownValue;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -30,11 +32,11 @@ class EditEquipments extends StatelessWidget {
               // color: Colors.green,
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
-              child: new Text(
-                "Oxygen Tank",
-                style: TextStyle(fontSize: 20.0),
-                textAlign: TextAlign.center,
-              ),
+              // child: new Text(
+              //   "Oxygen Tank",
+              //   style: TextStyle(fontSize: 20.0),
+              //   textAlign: TextAlign.center,
+              // ),
             ),
           ]),
           Row(children: <Widget>[
