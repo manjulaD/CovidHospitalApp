@@ -14,14 +14,14 @@ class EquipmentList extends StatefulWidget {
   EquipmentState createState() => new EquipmentState();
 }
 
-class Equipment {
-  final name;
-  final urgent;
-  final veryUrgent;
-  final regularNeeds;
+// class Equipment {
+//   final name;
+//   final urgent;
+//   final veryUrgent;
+//   final regularNeeds;
 
-  Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
-}
+//   Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
+// }
 
 class EquipmentState extends State<EquipmentList> {
   List data;
