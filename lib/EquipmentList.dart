@@ -48,7 +48,7 @@ class EquipmentState extends State<EquipmentList> {
   }
 
   Future<List<Equipment>> getData() async {
-    var response = await http.get(Uri.encodeFull("https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals"), headers: {
+    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/4/required-instruments"), headers: {
       //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
     });
 
@@ -57,10 +57,10 @@ class EquipmentState extends State<EquipmentList> {
     });
 
     for (var i = 0; i < data.length; i++) {
-      equipments.add(new Equipment(data[i]["name"], data[i]["name"], data[i]["name"], data[i]["name"]));
+      equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"], data[i]["veryUrgentNeedQuantity"], data[i]["regularNeedQuantity"]));
     }
     filteredEquipments = equipments;
-    print(data[1]["name"]);
+    print(data[1]["instrumentName"]);
 
     return equipments;
   }
@@ -154,18 +154,18 @@ class EquipmentState extends State<EquipmentList> {
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                             Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
-                            Text("3", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                            Text(filteredEquipments[index].veryUrgent, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                             Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
-                            Text("6", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                            Text(filteredEquipments[index].urgent, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
 
                           Flexible(
                               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                             Text("Regular Needs", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
-                            Text("1", style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                            Text(filteredEquipments[index].regularNeeds, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
                           ])),
                           //onPressed: moveToRegister,
                         ],
