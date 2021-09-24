@@ -124,7 +124,7 @@ class EquipmentState extends State<EquipmentList> {
                   print(filteredEquipments[index].name);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EquipmentDetails(filteredEquipments[index])),
+                    MaterialPageRoute(builder: (context) => EquipmentDetails("filteredEquipments[index]")),
                   );
                 },
                 child: Container(
