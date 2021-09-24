@@ -57,7 +57,7 @@ class EquipmentState extends State<EquipmentList> {
     });
 
     for (var i = 0; i < data.length; i++) {
-      equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"], data[i]["veryUrgentNeedQuantity"], data[i]["regularNeedQuantity"]));
+      equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"].toString(), data[i]["veryUrgentNeedQuantity"].toString(), data[i]["regularNeedQuantity"].toString()));
     }
     filteredEquipments = equipments;
     print(data[1]["instrumentName"]);
