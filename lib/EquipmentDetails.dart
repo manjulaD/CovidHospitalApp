@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'EquipmentList.dart';
 import 'EditEquipments.dart';
+import 'Models/Equipment.dart';
 
 class EquipmentDetails extends StatelessWidget {
-  final String hospitalName;
-  EquipmentDetails(this.hospitalName);
+  final Equipment equipment;
+  EquipmentDetails(this.equipment);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "Oxygen Tank",
+                equipment.name,
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -53,7 +54,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "3",
+                equipment.veryUrgent,
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -75,7 +76,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "4",
+                equipment.urgent,
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
@@ -97,7 +98,7 @@ class EquipmentDetails extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(5),
               child: new Text(
-                "4",
+                equipment.regularNeeds,
                 style: TextStyle(fontSize: 20.0),
                 textAlign: TextAlign.center,
               ),
