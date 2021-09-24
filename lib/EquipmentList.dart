@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'EquipmentDetails.dart';
+import 'Models/Equipment.dart';
 
 class EquipmentList extends StatefulWidget {
   final String hospitalName;
@@ -123,7 +124,7 @@ class EquipmentState extends State<EquipmentList> {
                   print(filteredEquipments[index].name);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EquipmentDetails("")),
+                    MaterialPageRoute(builder: (context) => EquipmentDetails(filteredEquipments[index])),
                   );
                 },
                 child: Container(
