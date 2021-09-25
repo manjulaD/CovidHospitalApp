@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'EquipmentList.dart';
 import 'Detail.dart';
+import 'Models/Equipment.dart';
 
 class EditEquipments extends StatelessWidget {
-  final String hospitalName;
-  EditEquipments(this.hospitalName);
+  final Equipment equipment;
+  EditEquipments(this.equipment);
 
   String dropdownValue;
 
@@ -116,7 +117,7 @@ class EditEquipments extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Detail(hospitalName)),
+                    MaterialPageRoute(builder: (context) => Detail("")),
                   );
                 },
                 child: Text(

@@ -115,7 +115,7 @@ class EquipmentDetails extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditEquipments(hospitalName)),
+                    MaterialPageRoute(builder: (context) => EditEquipments(equipment)),
                   );
                 },
                 child: Text(
@@ -132,10 +132,10 @@ class EquipmentDetails extends StatelessWidget {
 
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
+                  // );
                 },
                 child: Text(
                   'Delete',
