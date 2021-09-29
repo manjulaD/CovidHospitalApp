@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'EquipmentList.dart';
 
 class Detail extends StatelessWidget {
-  final String hospitalName;
-  Detail(this.hospitalName);
+  final Map<String, dynamic> hospitalDetails;
+  Detail(this.hospitalDetails);
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> hospitalAddress = hospitalDetails["address"];
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Hospital Details"),
@@ -19,7 +19,7 @@ class Detail extends StatelessWidget {
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(20),
             child: new Text(
-              "${hospitalName}",
+              "${hospitalDetails["hospitalName"]}",
               style: TextStyle(fontSize: 25.0),
               textAlign: TextAlign.center,
             ),
@@ -38,34 +38,19 @@ class Detail extends StatelessWidget {
               child: new Column(
                 children: [
                   new Text(
-                    "Hospital Coordinator",
+                    hospitalAddress["street"] == null ? "Street" : hospitalAddress["street"],
                     style: TextStyle(fontSize: 20.0),
                     textAlign: TextAlign.start,
                   ),
                   new Text(
-                    "Dr. Abcd Efgh",
-                    style: TextStyle(fontSize: 15.0),
+                    hospitalAddress["city"] == null ? "City" : hospitalAddress["city"],
+                    style: TextStyle(fontSize: 20.0),
                     textAlign: TextAlign.start,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      launch("tel://0717904023");
-                    },
-                    child: Text(
-                      "0717904023",
-                      style: TextStyle(fontSize: 15.0),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      launch("mailto://test@gmail.com");
-                    },
-                    child: Text(
-                      "test@gmail.com",
-                      style: TextStyle(fontSize: 15.0),
-                      textAlign: TextAlign.start,
-                    ),
+                  new Text(
+                    hospitalAddress["districtName"] == null ? "District" : hospitalAddress["districtName"],
+                    style: TextStyle(fontSize: 20.0),
+                    textAlign: TextAlign.start,
                   ),
                 ],
               )),
@@ -80,7 +65,7 @@ class Detail extends StatelessWidget {
                 // Navigate back to first route when tapped.
               },
               child: Text(
-                'Add Equipments',
+                'Donated Instruments',
                 style: TextStyle(fontSize: 25.0),
               ),
             ),
@@ -95,11 +80,11 @@ class Detail extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
+                  MaterialPageRoute(builder: (context) => EquipmentList(hospitalDetails)),
                 );
               },
               child: Text(
-                'View Required Equipments',
+                'Required Equipments',
                 style: TextStyle(fontSize: 25.0),
               ),
             ),

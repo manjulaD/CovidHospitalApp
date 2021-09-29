@@ -59,7 +59,7 @@ class HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Detail(data[index]["hospitalName"])),
+                  MaterialPageRoute(builder: (context) => Detail(data[index])),
                 );
               },
             ),

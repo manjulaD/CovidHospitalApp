@@ -8,10 +8,10 @@ import 'EquipmentDetails.dart';
 import 'Models/Equipment.dart';
 
 class EquipmentList extends StatefulWidget {
-  final String hospitalName;
-  EquipmentList(this.hospitalName);
+  final Map<String, dynamic> hospitalDetails;
+  EquipmentList(this.hospitalDetails);
   @override
-  EquipmentState createState() => new EquipmentState();
+  EquipmentState createState() => new EquipmentState(hospitalDetails);
 }
 
 // class Equipment {
@@ -24,15 +24,18 @@ class EquipmentList extends StatefulWidget {
 // }
 
 class EquipmentState extends State<EquipmentList> {
+  final Map<String, dynamic> hospitalDetails;
+
   List data;
   //for search bar
   final TextEditingController _filter = new TextEditingController();
+
   String _searchText = "";
   List<Equipment> filteredEquipments = [];
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
-  EquipmentState() {
+  EquipmentState(this.hospitalDetails) {
     _filter.addListener(() {
       if (_filter.text.isEmpty) {
         setState(() {
@@ -126,6 +129,7 @@ class EquipmentState extends State<EquipmentList> {
                     context,
                     MaterialPageRoute(builder: (context) => EquipmentDetails(filteredEquipments[index])),
                   );
+
                 },
                 child: Container(
                     padding: EdgeInsets.all(10),
