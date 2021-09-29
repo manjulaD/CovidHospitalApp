@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'Detail.dart';
+import 'HospitalDetail.dart';
 
 void main() {
   runApp(new MaterialApp(home: new HomePage()));
@@ -59,7 +59,7 @@ class HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Detail(data[index])),
+                  MaterialPageRoute(builder: (context) => HospitalDetail(data[index])),
                 );
               },
             ),

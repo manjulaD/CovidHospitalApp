@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'EquipmentList.dart';
+import 'RequiredEquipmentList.dart';
 
-class Detail extends StatelessWidget {
+class HospitalDetail extends StatelessWidget {
   final Map<String, dynamic> hospitalDetails;
-  Detail(this.hospitalDetails);
+  HospitalDetail(this.hospitalDetails);
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class Detail extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EquipmentList(hospitalDetails)),
+                  MaterialPageRoute(builder: (context) => RequiredEquipmentList(hospitalDetails)),
                 );
               },
               child: Text(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'EquipmentList.dart';
-import 'Detail.dart';
+import 'RequiredEquipmentList.dart';
+import 'HospitalDetail.dart';
 import 'Models/Equipment.dart';
 
-class EditEquipments extends StatelessWidget {
+class RequiredEditEquipments extends StatelessWidget {
   final Equipment equipment;
-  EditEquipments(this.equipment);
+  RequiredEditEquipments(this.equipment);
 
   String dropdownValue;
 

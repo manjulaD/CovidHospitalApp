@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'EquipmentList.dart';
-import 'EditEquipments.dart';
+import 'RequiredEquipmentList.dart';
+import 'RequiredEditEquipments.dart';
 import 'Models/Equipment.dart';
 
-class EquipmentDetails extends StatelessWidget {
+class RequiredEquipmentDetails extends StatelessWidget {
   final Equipment equipment;
-  EquipmentDetails(this.equipment);
+  RequiredEquipmentDetails(this.equipment);
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Equipment Details"),
+        title: new Text("Required Equipment Details"),
       ),
       body: new Column(
         children: <Widget>[
@@ -115,7 +115,7 @@ class EquipmentDetails extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditEquipments(equipment)),
+                    MaterialPageRoute(builder: (context) => RequiredEditEquipments(equipment)),
                   );
                 },
                 child: Text(

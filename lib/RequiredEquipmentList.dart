@@ -4,14 +4,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'EquipmentDetails.dart';
+import 'RequiredEquipmentDetails.dart';
 import 'Models/Equipment.dart';
 
-class EquipmentList extends StatefulWidget {
+class RequiredEquipmentList extends StatefulWidget {
   final Map<String, dynamic> hospitalDetails;
-  EquipmentList(this.hospitalDetails);
+  RequiredEquipmentList(this.hospitalDetails);
   @override
-  EquipmentState createState() => new EquipmentState(hospitalDetails);
+  RequiredEquipmentState createState() => new RequiredEquipmentState(hospitalDetails);
 }
 
 // class Equipment {
@@ -23,7 +23,7 @@ class EquipmentList extends StatefulWidget {
 //   Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
 // }
 
-class EquipmentState extends State<EquipmentList> {
+class RequiredEquipmentState extends State<RequiredEquipmentList> {
   final Map<String, dynamic> hospitalDetails;
 
   List data;
@@ -35,7 +35,7 @@ class EquipmentState extends State<EquipmentList> {
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
-  EquipmentState(this.hospitalDetails) {
+  RequiredEquipmentState(this.hospitalDetails) {
     _filter.addListener(() {
       if (_filter.text.isEmpty) {
         setState(() {
@@ -127,7 +127,7 @@ class EquipmentState extends State<EquipmentList> {
                   print(filteredEquipments[index].name);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EquipmentDetails(filteredEquipments[index])),
+                    MaterialPageRoute(builder: (context) => RequiredEquipmentDetails(filteredEquipments[index])),
                   );
 
                 },
