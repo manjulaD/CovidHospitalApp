@@ -39,4 +39,7 @@ lib/generated_plugin_registrant.dart
 *.lock
 
 pubspec.lock
-pubspec.lock
+ios/build/Pods.build/Release-iphonesimulator/Flutter.build/dgph
+ios/build/Pods.build/Release-iphonesimulator/Pods-Runner.build/dgph
+ios/build/Pods.build/Release-iphonesimulator/url_launcher.build/dgph
+
