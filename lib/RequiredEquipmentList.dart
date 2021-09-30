@@ -52,7 +52,8 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   }
 
   Future<List<Equipment>> getData() async {
-    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/4/required-instruments"), headers: {
+    String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
+    var response = await http.get(Uri.encodeFull(_url), headers: {
       //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
     });
 
