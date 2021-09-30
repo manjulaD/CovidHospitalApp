@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'RequiredEquipmentList.dart';
+import 'DonatedEquipmentList.dart';
 
 class HospitalDetail extends StatelessWidget {
   final Map<String, dynamic> hospitalDetails;
@@ -54,22 +55,7 @@ class HospitalDetail extends StatelessWidget {
                   ),
                 ],
               )),
-          Container(
-            height: 50.0,
-            margin: EdgeInsets.all(10),
-            //padding: EdgeInsets.all(30),
-            width: double.infinity,
 
-            child: ElevatedButton(
-              onPressed: () {
-                // Navigate back to first route when tapped.
-              },
-              child: Text(
-                'Donated Instruments',
-                style: TextStyle(fontSize: 25.0),
-              ),
-            ),
-          ),
           Container(
             height: 50.0,
             margin: EdgeInsets.all(10),
@@ -85,6 +71,25 @@ class HospitalDetail extends StatelessWidget {
               },
               child: Text(
                 'Required Equipments',
+                style: TextStyle(fontSize: 25.0),
+              ),
+            ),
+          ),
+          Container(
+            height: 50.0,
+            margin: EdgeInsets.all(10),
+            //padding: EdgeInsets.all(30),
+            width: double.infinity,
+
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DonatedEquipmentList(hospitalDetails)),
+                );
+              },
+              child: Text(
+                'Donated Equipments',
                 style: TextStyle(fontSize: 25.0),
               ),
             ),

@@ -7,11 +7,11 @@ import 'package:http/http.dart' as http;
 import 'RequiredEquipmentDetails.dart';
 import 'Models/Equipment.dart';
 
-class RequiredEquipmentList extends StatefulWidget {
+class DonatedEquipmentList extends StatefulWidget {
   final Map<String, dynamic> hospitalDetails;
-  RequiredEquipmentList(this.hospitalDetails);
+  DonatedEquipmentList(this.hospitalDetails);
   @override
-  RequiredEquipmentState createState() => new RequiredEquipmentState(hospitalDetails);
+  DonateEquipmentState createState() => new DonateEquipmentState(hospitalDetails);
 }
 
 // class Equipment {
@@ -23,7 +23,7 @@ class RequiredEquipmentList extends StatefulWidget {
 //   Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
 // }
 
-class RequiredEquipmentState extends State<RequiredEquipmentList> {
+class DonateEquipmentState extends State<DonatedEquipmentList> {
   final Map<String, dynamic> hospitalDetails;
 
   List data;
@@ -35,7 +35,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
-  RequiredEquipmentState(this.hospitalDetails) {
+  DonateEquipmentState(this.hospitalDetails) {
     _filter.addListener(() {
       if (_filter.text.isEmpty) {
         setState(() {
@@ -154,74 +154,31 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Container(margin: EdgeInsets.all(5), padding: EdgeInsets.all(5), child:
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].veryUrgent, style: new TextStyle(color: Colors.redAccent, fontSize: 16.0)),
-                                ])),
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].urgent, style: new TextStyle(color: Colors.orangeAccent, fontSize: 16.0)),
-                                ])),
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Regular Needs", style: new TextStyle(color: Colors.blue, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].regularNeeds, style: new TextStyle(color: Colors.blueAccent, fontSize: 16.0)),
-                                ])),
-                              ]
-                            ),
-                          ),
-                          Container(margin: EdgeInsets.all(5), padding: EdgeInsets.all(5), child:
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                      Text("Current At Hand", style: new TextStyle(color: Colors.indigo, fontSize: 13.0)),
-                                      Text(filteredEquipments[index].currentAtHandQuantity, style: new TextStyle(color: Colors.indigo, fontSize: 16.0)),
-                                    ])),
+                          Flexible(
+                              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                            Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
+                            Text(filteredEquipments[index].veryUrgent, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                          ])),
+                          Flexible(
+                              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                            Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
+                            Text(filteredEquipments[index].urgent, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                          ])),
 
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                      Text("Excess Qty", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
-                                      Text(filteredEquipments[index].excessQuantity, style: new TextStyle(color: Colors.green, fontSize: 16.0)),
-                                    ])),
-                                //onPressed: moveToRegister,
-                              ],
-                            )
-                          )
-                       ]
-                      )
-                ])));
+                          Flexible(
+                              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                            Text("Regular Needs", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
+                            Text(filteredEquipments[index].regularNeeds, style: new TextStyle(color: Colors.blue, fontSize: 16.0)),
+                          ])),
+                          //onPressed: moveToRegister,
+                        ],
+                      ),
+                    ])));
           }
 
-          // return Card(
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.circular(40), // if you need this
-          //     side: BorderSide(
-          //       color: Colors.grey.withOpacity(0.2),
-          //       width: 1,
-          //     ),
-          //   ),
-          //   child: GestureDetector(
-          //     child: new Text(data[index]["name"]),
-          //     onTap: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(builder: (context) => Detail(data[index]["name"])),
-          //       );
-          //     },
-          //   ),
-          // );
-
-          //  );
         },
       ),
     );

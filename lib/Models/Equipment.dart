@@ -3,6 +3,8 @@ class Equipment {
   final urgent;
   final veryUrgent;
   final regularNeeds;
+  final currentAtHandQuantity;
+  final excessQuantity;
 
-  Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
+  Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds, this.currentAtHandQuantity, this.excessQuantity);
 }
