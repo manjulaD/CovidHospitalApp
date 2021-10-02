@@ -26,7 +26,7 @@ class RequiredEquipmentList extends StatefulWidget {
 class RequiredEquipmentState extends State<RequiredEquipmentList> {
   final Map<String, dynamic> hospitalDetails;
 
-  List data;
+  List data = [];
   //for search bar
   final TextEditingController _filter = new TextEditingController();
 
@@ -52,8 +52,13 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   }
 
   Future<List<Equipment>> getData() async {
-    String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}' + '/required-instruments';
-    var response = await http.get(Uri.encodeFull(_url), headers: {
+
+    // String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
+    String _subURL = '/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
+    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
+
+    var response = await http.get(_url, headers: {
+
       //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
     });
 

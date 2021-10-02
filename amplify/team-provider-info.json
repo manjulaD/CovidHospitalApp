@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-covidhospitalapp-dev-183725-authRole",
+      "UnauthRoleArn": "arn:aws:iam::412415385035:role/amplify-covidhospitalapp-dev-183725-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::412415385035:role/amplify-covidhospitalapp-dev-183725-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-covidhospitalapp-dev-183725-deployment",
+      "UnauthRoleName": "amplify-covidhospitalapp-dev-183725-unauthRole",
+      "StackName": "amplify-covidhospitalapp-dev-183725",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:412415385035:stack/amplify-covidhospitalapp-dev-183725/88d01d70-22b8-11ec-938f-02c5c17a074c",
+      "AmplifyAppId": "d3ck6rc5hieqnu"
+    },
+    "categories": {
+      "auth": {
+        "covidhospitalappae9f0a29": {}
+      }
+    }
+  }
+}

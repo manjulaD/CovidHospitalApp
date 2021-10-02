@@ -1,73 +1,131 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// Amplify Flutter Packages
+import 'package:amplify_flutter/amplify.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 
-import 'HospitalDetail.dart';
+// Generated in previous step
+import 'amplifyconfiguration.dart';
+
+import 'package:flutter/material.dart';
+import 'HospitalList.dart';
+
 
 void main() {
-  runApp(new MaterialApp(home: new HomePage()));
+  runApp(new MaterialApp(home: new LoginPage()));
 }
 
-class HomePage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  HomePageState createState() => new HomePageState();
+  LoginPageState createState() => new LoginPageState();
 }
 
-class HomePageState extends State<HomePage> {
-  List data;
+class LoginPageState extends State<LoginPage> {
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  Future<String> getData() async {
-    var response = await http.get(Uri.encodeFull("https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/"), headers: {
-      //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
-      //https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/
-      //https://myhospitalsapi.aihw.gov.au/api/v0/retired-myhospitals-api/hospitals
-    });
-
-    this.setState(() {
-      data = json.decode(response.body);
-    });
-
-    print(data[1]["hospitalName"]);
-
-    return "Success!";
-  }
+  final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
-    this.getData();
+    _configureAmplify();
+  }
+
+  void _configureAmplify() async {
+    // Add Pinpoint and Cognito Plugins, or any other plugins you want to use
+    // AmplifyAnalyticsPinpoint analyticsPlugin = AmplifyAnalyticsPinpoint();
+    AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
+    await Amplify.addPlugins([authPlugin]);
+
+    // Once Plugins are added, configure Amplify
+    // Note: Amplify can only be configured once.
+    try {
+      await Amplify.configure(amplifyconfig);
+    } on AmplifyAlreadyConfiguredException {
+      print(
+          "Tried to reconfigure Amplify; this can occur when your app restarts on Android.");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Listviews"), backgroundColor: Colors.blue),
-      body: new ListView.builder(
-        itemCount: data == null ? 0 : data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40), // if you need this
-              side: BorderSide(
-                color: Colors.grey.withOpacity(0.2),
-                width: 1,
+        key: _scaffoldKey,
+      appBar: new AppBar(title: new Text("Login"), backgroundColor: Colors.blue),
+      body: Form(
+        key: _formKey,
+        child: Container(
+          width: double.infinity,
+          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.blueAccent, width: 3.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                ),
+          ),
+          child: new Column(
+            children: [
+              TextFormField(
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(labelText: "UserName"),
+                controller: _userController,
+                validator: (value) =>
+                value == null ? "Password is invalid" : null,
               ),
-            ),
-            child: GestureDetector(
-              child: new Text(data[index]["hospitalName"]),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HospitalDetail(data[index])),
-                );
-              },
+              TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(labelText: "Password"),
+                obscureText: true,
+                controller: _passwordController,
+                validator: (value) =>
+                value == null ? "Password is invalid" : null,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: Text("LOG IN"),
+                onPressed: () => _loginButtonOnPressed(context),
+              ),
+              OutlinedButton(
+                child: Text("Create New Account"),
+                onPressed: () => _gotoSignUpScreen(context),
+              ),
+          ])
+      ))
+    );
+  }
+
+  Future<void> _loginButtonOnPressed(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      /// Login code
+        final user = _userController.text.trim();
+        final password = _passwordController.text;
+
+        final response = await Amplify.Auth.signIn(
+          username: user,
+          password: password,
+        );
+
+        if (response.isSignedIn) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => HospitalList(),
             ),
           );
+        }
+    }
+  }
 
-          //  );
-        },
+  void _gotoSignUpScreen(BuildContext context) {
+    /* Navigator.push(
+        context,
+       MaterialPageRoute(
+        builder: (_) => SignUpScreen(),
       ),
-    );
+    ); */
   }
 }

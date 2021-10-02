@@ -8,7 +8,7 @@ class RequiredEditEquipments extends StatelessWidget {
   final Equipment equipment;
   RequiredEditEquipments(this.equipment);
 
-  String dropdownValue;
+  String dropdownValue = '';
 
   @override
   Widget build(BuildContext context) {
