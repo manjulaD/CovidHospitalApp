@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import 'DonatedEquipmentDetails.dart';
 import 'Models/DonatedEquipment.dart';
+import 'LogOut.dart';
 
 class DonatedEquipmentList extends StatefulWidget {
   final Map<String, dynamic> hospitalDetails;
@@ -25,6 +26,8 @@ class DonatedEquipmentState extends State<DonatedEquipmentList> {
   String _searchText = "";
   List<DonatedEquipment> filteredEquipments = [];
   Icon _searchIcon = new Icon(Icons.search);
+  Icon _logoutIcon = new Icon(Icons.logout);
+
   Widget _appBarTitle = new Text('Donated Equipments');
   List<DonatedEquipment> equipments = [];
   DonatedEquipmentState(this.hospitalDetails) {
@@ -59,7 +62,7 @@ class DonatedEquipmentState extends State<DonatedEquipmentList> {
           data[i]["donatedDate"].toString(), data[i]["status"], data[i]["comments"], data[i]["hospital"], data[i]["donorOrg"]));
     }
     filteredEquipments = equipments;
-    print(data[1]["instrumentName"]);
+    print(data[0]["instrumentName"]);
 
     return equipments;
   }
@@ -107,9 +110,16 @@ class DonatedEquipmentState extends State<DonatedEquipmentList> {
               _searchPressed();
             },
             tooltip: "Search",
-          )
+          ),
+          IconButton(
+            icon: _logoutIcon,
+            onPressed: () {
+              new LogOut().logoutButtonOnPressed(context);
+            },
+            tooltip: "Logout",
+          ),
         ],
-        title: _appBarTitle == null ? Text('${hospitalDetails["hospitalName"]}') : _appBarTitle,
+        title: _appBarTitle,
         centerTitle: true,
         elevation: 0,
       ),

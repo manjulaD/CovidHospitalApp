@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'RequiredEquipmentDetails.dart';
+import 'LogOut.dart';
 import 'Models/Equipment.dart';
 
 class RequiredEquipmentList extends StatefulWidget {
@@ -14,14 +15,6 @@ class RequiredEquipmentList extends StatefulWidget {
   RequiredEquipmentState createState() => new RequiredEquipmentState(hospitalDetails);
 }
 
-// class Equipment {
-//   final name;
-//   final urgent;
-//   final veryUrgent;
-//   final regularNeeds;
-
-//   Equipment(this.name, this.urgent, this.veryUrgent, this.regularNeeds);
-// }
 
 class RequiredEquipmentState extends State<RequiredEquipmentList> {
   final Map<String, dynamic> hospitalDetails;
@@ -33,6 +26,8 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   String _searchText = "";
   List<Equipment> filteredEquipments = [];
   Icon _searchIcon = new Icon(Icons.search);
+  Icon _logoutIcon = new Icon(Icons.logout);
+
   Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
   RequiredEquipmentState(this.hospitalDetails) {
@@ -118,7 +113,14 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
               _searchPressed();
             },
             tooltip: "Search",
-          )
+          ),
+          IconButton(
+            icon: _logoutIcon,
+            onPressed: () {
+              new LogOut().logoutButtonOnPressed(context);
+            },
+            tooltip: "Logout",
+          ),
         ],
         title: _appBarTitle == null ? Text('Choose a Location') : _appBarTitle,
         centerTitle: true,

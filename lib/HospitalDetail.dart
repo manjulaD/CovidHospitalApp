@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'RequiredEquipmentList.dart';
 import 'DonatedEquipmentList.dart';
+import 'LogOut.dart';
 
 class HospitalDetail extends StatelessWidget {
   final Map<String, dynamic> hospitalDetails;
+  Icon _logoutIcon = new Icon(Icons.logout);
+
   HospitalDetail(this.hospitalDetails);
 
   @override
@@ -11,6 +14,15 @@ class HospitalDetail extends StatelessWidget {
     Map<String, dynamic> hospitalAddress = hospitalDetails["address"];
     return new Scaffold(
       appBar: new AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: _logoutIcon,
+            onPressed: () {
+              new LogOut().logoutButtonOnPressed(context);
+            },
+            tooltip: "Logout",
+          ),
+        ],
         title: new Text("Hospital Details"),
       ),
       body: new Column(

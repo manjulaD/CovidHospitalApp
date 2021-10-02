@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'HospitalDetail.dart';
+import 'LogOut.dart';
 
 class HospitalList extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class HospitalList extends StatefulWidget {
 
 class HospitalListState extends State<HospitalList> {
   List data = [];
+  Icon _logoutIcon = new Icon(Icons.logout);
 
   Future<String> getData() async {
     String _subURL = '/dev/hospitals/';
@@ -39,7 +41,18 @@ class HospitalListState extends State<HospitalList> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Listviews"), backgroundColor: Colors.blue),
+      appBar: new AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: _logoutIcon,
+              onPressed: () {
+                new LogOut().logoutButtonOnPressed(context);
+              },
+              tooltip: "Logout",
+            ),
+          ],
+          title: new Text("Hospital List"),
+          backgroundColor: Colors.blue),
       body: new ListView.builder(
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {

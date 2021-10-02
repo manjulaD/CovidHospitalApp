@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 
 // Amplify Flutter Packages
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-
-// Generated in previous step
 import 'amplifyconfiguration.dart';
 
 import 'package:flutter/material.dart';
@@ -30,7 +27,8 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    _configureAmplify();
+    if (!Amplify.isConfigured)
+      _configureAmplify();
   }
 
   void _configureAmplify() async {
@@ -99,25 +97,31 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _loginButtonOnPressed(BuildContext context) async {
-    if (_formKey.currentState!.validate()) {
-      /// Login code
-        final user = _userController.text.trim();
-        final password = _passwordController.text;
 
-        final response = await Amplify.Auth.signIn(
-          username: user,
-          password: password,
-        );
+      if (_formKey.currentState!.validate()) {
+        try{
+          final user = _userController.text.trim();
+          final password = _passwordController.text;
 
-        if (response.isSignedIn) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (_) => HospitalList(),
-            ),
+          final response = await Amplify.Auth.signIn(
+            username: user,
+            password: password,
           );
+
+          if (response.isSignedIn) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => HospitalList(),
+              ),
+            );
+          }
         }
-    }
+        on AuthException catch (e) {
+          Amplify.Auth.signOut();
+          print(e.message);
+        }
+      }
   }
 
   void _gotoSignUpScreen(BuildContext context) {
