@@ -1,0 +1,57 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-covidhospitalapp-dev-183725-authRole",
+      "UnauthRoleArn": "arn:aws:iam::412415385035:role/amplify-covidhospitalapp-dev-183725-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::412415385035:role/amplify-covidhospitalapp-dev-183725-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-covidhospitalapp-dev-183725-deployment",
+      "UnauthRoleName": "amplify-covidhospitalapp-dev-183725-unauthRole",
+      "StackName": "amplify-covidhospitalapp-dev-183725",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:412415385035:stack/amplify-covidhospitalapp-dev-183725/88d01d70-22b8-11ec-938f-02c5c17a074c",
+      "AmplifyAppId": "d3ck6rc5hieqnu"
+    }
+  },
+  "auth": {
+    "covidhospitalappae9f0a29": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "loginMechanisms": [
+          "PREFERRED_USERNAME"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-covidhospitalapp-dev-183725-deployment/amplify-cfn-templates/auth/covidhospitalappae9f0a29-cloudformation-template.yml",
+        "logicalId": "authcovidhospitalappae9f0a29"
+      },
+      "lastPushTimeStamp": "2021-10-02T01:54:48.394Z",
+      "output": {
+        "UserPoolId": "ap-southeast-1_TngYob6jG",
+        "AppClientIDWeb": "3kqqr3530qudh6bhor5mvpbv1g",
+        "AppClientID": "2buct4cfeuejeprgeml0r5lid4",
+        "IdentityPoolId": "ap-southeast-1:2652e6f2-640d-4904-b464-0951beaf4e77",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-southeast-1:412415385035:userpool/ap-southeast-1_TngYob6jG",
+        "IdentityPoolName": "covidhospitalappae9f0a29_identitypool_ae9f0a29__dev",
+        "UserPoolName": "covidhospitalappae9f0a29_userpool_ae9f0a29"
+      },
+      "lastPushDirHash": "1XMtW+rvxpRGtoFFXaigqXfwoHA="
+    }
+  }
+}
