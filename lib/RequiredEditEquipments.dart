@@ -121,26 +121,7 @@ class RequiredEditEquipments extends StatelessWidget {
                   //);
                 },
                 child: Text(
-                  'Edit',
-                  style: TextStyle(fontSize: 25.0),
-                ),
-              ),
-            ),
-            Container(
-              height: 50.0,
-              margin: EdgeInsets.all(10),
-              //  padding: EdgeInsets.all(30),
-              // width: double.infinity,
-
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   // MaterialPageRoute(builder: (context) => EquipmentList(hospitalName)),
-                  // );
-                },
-                child: Text(
-                  'Delete',
+                  'Save',
                   style: TextStyle(fontSize: 25.0),
                 ),
               ),

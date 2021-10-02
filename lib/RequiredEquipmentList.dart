@@ -52,7 +52,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   }
 
   Future<List<Equipment>> getData() async {
-    String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
+    String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}' + '/required-instruments';
     var response = await http.get(Uri.encodeFull(_url), headers: {
       //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
     });
@@ -62,8 +62,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
     });
 
     for (var i = 0; i < data.length; i++) {
-      equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"].toString(), data[i]["veryUrgentNeedQuantity"].toString(),
-          data[i]["regularNeedQuantity"].toString(), data[i]["currentAtHandQuantity"].toString(), data[i]["excessQuantity"].toString()));
+      equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"].toString(), data[i]["veryUrgentNeedQuantity"].toString(), data[i]["regularNeedQuantity"].toString(), data[i]["currentAtHandQuantity"].toString(), data[i]["excessQuantity"].toString()));
     }
     filteredEquipments = equipments;
     print(data[1]["instrumentName"]);
@@ -131,7 +130,6 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
                     context,
                     MaterialPageRoute(builder: (context) => RequiredEquipmentDetails(filteredEquipments[index])),
                   );
-
                 },
                 child: Container(
                     padding: EdgeInsets.all(10),
@@ -155,52 +153,50 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Column(
-                        children: <Widget>[
-                          Container(margin: EdgeInsets.all(5), padding: EdgeInsets.all(5), child:
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].veryUrgent, style: new TextStyle(color: Colors.redAccent, fontSize: 16.0)),
-                                ])),
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].urgent, style: new TextStyle(color: Colors.orangeAccent, fontSize: 16.0)),
-                                ])),
-                                Flexible(
-                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                  Text("Regular Needs", style: new TextStyle(color: Colors.blue, fontSize: 13.0)),
-                                  Text(filteredEquipments[index].regularNeeds, style: new TextStyle(color: Colors.blueAccent, fontSize: 16.0)),
-                                ])),
-                              ]
-                            ),
-                          ),
-                          Container(margin: EdgeInsets.all(5), padding: EdgeInsets.all(5), child:
-                            Row(
+                      Column(children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(5),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                            Flexible(
+                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                              Text("Very Urgent", style: new TextStyle(color: Colors.red, fontSize: 13.0)),
+                              Text(filteredEquipments[index].veryUrgent, style: new TextStyle(color: Colors.redAccent, fontSize: 16.0)),
+                            ])),
+                            Flexible(
+                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                              Text("Urgent", style: new TextStyle(color: Colors.orange, fontSize: 13.0)),
+                              Text(filteredEquipments[index].urgent, style: new TextStyle(color: Colors.orangeAccent, fontSize: 16.0)),
+                            ])),
+                            Flexible(
+                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                              Text("Regular Needs", style: new TextStyle(color: Colors.blue, fontSize: 13.0)),
+                              Text(filteredEquipments[index].regularNeeds, style: new TextStyle(color: Colors.blueAccent, fontSize: 16.0)),
+                            ])),
+                          ]),
+                        ),
+                        Container(
+                            margin: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(5),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                 Flexible(
                                     child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                      Text("Current At Hand", style: new TextStyle(color: Colors.indigo, fontSize: 13.0)),
-                                      Text(filteredEquipments[index].currentAtHandQuantity, style: new TextStyle(color: Colors.indigo, fontSize: 16.0)),
-                                    ])),
+                                  Text("Current At Hand", style: new TextStyle(color: Colors.indigo, fontSize: 13.0)),
+                                  Text(filteredEquipments[index].currentAtHandQuantity, style: new TextStyle(color: Colors.indigo, fontSize: 16.0)),
+                                ])),
 
                                 Flexible(
                                     child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                                      Text("Excess Qty", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
-                                      Text(filteredEquipments[index].excessQuantity, style: new TextStyle(color: Colors.green, fontSize: 16.0)),
-                                    ])),
+                                  Text("Excess Qty", style: new TextStyle(color: Colors.green, fontSize: 13.0)),
+                                  Text(filteredEquipments[index].excessQuantity, style: new TextStyle(color: Colors.green, fontSize: 16.0)),
+                                ])),
                                 //onPressed: moveToRegister,
                               ],
-                            )
-                          )
-                       ]
-                      )
-                ])));
+                            ))
+                      ])
+                    ])));
           }
 
           // return Card(
