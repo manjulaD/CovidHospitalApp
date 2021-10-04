@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'RequiredEquipmentList.dart';
-import 'HospitalDetail.dart';
+import 'main.dart';
 import 'Models/Equipment.dart';
 
 class RequiredEditEquipments extends StatelessWidget {
   final Equipment equipment;
+  final Icon _logoutIcon = new Icon(Icons.logout);
   RequiredEditEquipments(this.equipment);
 
   String dropdownValue = '';
@@ -15,6 +16,14 @@ class RequiredEditEquipments extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Edit Equipment"),
+        actions: <Widget>[
+          IconButton(
+            icon: _logoutIcon,
+            onPressed: () =>
+                context.read<UserLoginSession>().logoutButtonOnPressed(context),
+            tooltip: "Logout",
+          ),
+        ]
       ),
       body: new Column(
         children: <Widget>[

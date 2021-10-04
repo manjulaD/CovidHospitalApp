@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'RequiredEquipmentList.dart';
+import 'package:provider/provider.dart';
+import 'main.dart';
 import 'RequiredEditEquipments.dart';
 import 'Models/Equipment.dart';
 
 class RequiredEquipmentDetails extends StatelessWidget {
   final Equipment equipment;
+  final Icon _logoutIcon = new Icon(Icons.logout);
   RequiredEquipmentDetails(this.equipment);
 
   @override
@@ -13,11 +14,17 @@ class RequiredEquipmentDetails extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Required Equipment Details"),
+        actions: <Widget>[
+          IconButton(
+          icon: _logoutIcon,
+          onPressed: () =>
+              context.read<UserLoginSession>().logoutButtonOnPressed(context),
+          tooltip: "Logout",
+          ),
+        ]
       ),
       body: new Column(
         children: <Widget>[
-          //
-
           Container(
             // color: Colors.green,
             margin: EdgeInsets.all(10),

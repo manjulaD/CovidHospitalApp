@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'RequiredEquipmentList.dart';
 import 'DonatedEquipmentList.dart';
-import 'LogOut.dart';
+import 'main.dart';
 
 class HospitalDetail extends StatelessWidget {
   final Map<String, dynamic> hospitalDetails;
-  Icon _logoutIcon = new Icon(Icons.logout);
+  final Icon _logoutIcon = new Icon(Icons.logout);
 
   HospitalDetail(this.hospitalDetails);
 
@@ -17,9 +18,8 @@ class HospitalDetail extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: _logoutIcon,
-            onPressed: () {
-              new LogOut().logoutButtonOnPressed(context);
-            },
+            onPressed: () =>
+              context.read<UserLoginSession>().logoutButtonOnPressed(context),
             tooltip: "Logout",
           ),
         ],

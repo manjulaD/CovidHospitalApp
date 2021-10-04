@@ -6,130 +6,52 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'amplifyconfiguration.dart';
 
 import 'package:flutter/material.dart';
-import 'HospitalList.dart';
+import 'package:provider/provider.dart';
 
+import 'LoginPage.dart';
 
 void main() {
-  runApp(new MaterialApp(home: new LoginPage()));
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UserLoginSession()),
+        ],
+        child: new MaterialApp(home: new LoginPage()),
+      )
+  );
 }
 
-class LoginPage extends StatefulWidget {
-  @override
-  LoginPageState createState() => new LoginPageState();
-}
+class UserLoginSession with ChangeNotifier {
+  Map<String, dynamic>  _userAttrib = {};
+  String _idToken = '';
 
-class LoginPageState extends State<LoginPage> {
-  final TextEditingController _userController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  Map<String, dynamic> get userAttrib => _userAttrib;
+  String get idToken => _idToken;
 
-  final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  void refresh(String token, List<AuthUserAttribute> userAttrib) {
+    _idToken = token;
+    //print('idToken: $_idToken');
 
-  @override
-  void initState() {
-    if (!Amplify.isConfigured)
-      _configureAmplify();
+    userAttrib.forEach((element) {
+      //print('key: ${element.userAttributeKey}; value: ${element.value}');
+      _userAttrib['${element.userAttributeKey}'] = element.value;
+    });
+
+    notifyListeners();
   }
 
-  void _configureAmplify() async {
-    // Add Pinpoint and Cognito Plugins, or any other plugins you want to use
-    // AmplifyAnalyticsPinpoint analyticsPlugin = AmplifyAnalyticsPinpoint();
-    AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
-    await Amplify.addPlugins([authPlugin]);
-
-    // Once Plugins are added, configure Amplify
-    // Note: Amplify can only be configured once.
-    try {
-      await Amplify.configure(amplifyconfig);
-    } on AmplifyAlreadyConfiguredException {
-      print(
-          "Tried to reconfigure Amplify; this can occur when your app restarts on Android.");
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        key: _scaffoldKey,
-      appBar: new AppBar(title: new Text("Login"), backgroundColor: Colors.blue),
-      body: Form(
-        key: _formKey,
-        child: Container(
-          width: double.infinity,
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent, width: 3.0),
-                borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
-                ),
-          ),
-          child: new Column(
-            children: [
-              TextFormField(
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(labelText: "UserName"),
-                controller: _userController,
-                validator: (value) =>
-                value == null ? "Password is invalid" : null,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(labelText: "Password"),
-                obscureText: true,
-                controller: _passwordController,
-                validator: (value) =>
-                value == null ? "Password is invalid" : null,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                child: Text("LOG IN"),
-                onPressed: () => _loginButtonOnPressed(context),
-              ),
-              OutlinedButton(
-                child: Text("Create New Account"),
-                onPressed: () => _gotoSignUpScreen(context),
-              ),
-          ])
-      ))
-    );
-  }
-
-  Future<void> _loginButtonOnPressed(BuildContext context) async {
-
-      if (_formKey.currentState!.validate()) {
-        try{
-          final user = _userController.text.trim();
-          final password = _passwordController.text;
-
-          final response = await Amplify.Auth.signIn(
-            username: user,
-            password: password,
-          );
-
-          if (response.isSignedIn) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (_) => HospitalList(),
-              ),
-            );
-          }
-        }
-        on AuthException catch (e) {
-          Amplify.Auth.signOut();
-          print(e.message);
-        }
-      }
-  }
-
-  void _gotoSignUpScreen(BuildContext context) {
-    /* Navigator.push(
+  void logoutButtonOnPressed(BuildContext context) {
+    try{
+      Amplify.Auth.signOut();
+      Navigator.push(
         context,
-       MaterialPageRoute(
-        builder: (_) => SignUpScreen(),
-      ),
-    ); */
+        MaterialPageRoute(
+          builder: (_) => LoginPage(),
+        ),
+      );
+    }
+    on AuthException catch (e) {
+      print(e.message);
+    }
   }
 }

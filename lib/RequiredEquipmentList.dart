@@ -2,10 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 import 'RequiredEquipmentDetails.dart';
-import 'LogOut.dart';
+import 'main.dart';
 import 'Models/Equipment.dart';
 
 class RequiredEquipmentList extends StatefulWidget {
@@ -30,6 +31,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
 
   Widget _appBarTitle = new Text('Equipments');
   List<Equipment> equipments = [];
+
   RequiredEquipmentState(this.hospitalDetails) {
     _filter.addListener(() {
       if (_filter.text.isEmpty) {
@@ -49,7 +51,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   Future<List<Equipment>> getData() async {
 
     // String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
-    String _subURL = '/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
+    String _subURL = '/dev/hospitals/${hospitalDetails["hospitalId"]}/required-instruments';
     var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
 
     var response = await http.get(_url, headers: {
@@ -95,7 +97,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
 
   @override
   Widget build(BuildContext context) {
-    if (!(_searchText.isEmpty)) {
+    if (_searchText.isNotEmpty) {
       List<Equipment> tempList = [];
       for (int i = 0; i < equipments.length; i++) {
         if (equipments[i].name.toLowerCase().contains(_searchText.toLowerCase())) {
@@ -116,13 +118,12 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
           ),
           IconButton(
             icon: _logoutIcon,
-            onPressed: () {
-              new LogOut().logoutButtonOnPressed(context);
-            },
+            onPressed: () =>
+                context.read<UserLoginSession>().logoutButtonOnPressed(context),
             tooltip: "Logout",
           ),
         ],
-        title: _appBarTitle == null ? Text('Choose a Location') : _appBarTitle,
+        title: _appBarTitle,
         centerTitle: true,
         elevation: 0,
       ),

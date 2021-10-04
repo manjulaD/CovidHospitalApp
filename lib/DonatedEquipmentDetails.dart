@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'DonatedEquipmentList.dart';
+import 'package:provider/provider.dart';
+import 'main.dart';
 import 'Models/DonatedEquipment.dart';
 
 class DonatedEquipmentDetails extends StatelessWidget {
   final DonatedEquipment equipment;
+  final Icon _logoutIcon = new Icon(Icons.logout);
+
   DonatedEquipmentDetails(this.equipment);
 
   @override
@@ -11,6 +14,14 @@ class DonatedEquipmentDetails extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Required Equipment Details"),
+        actions: <Widget>[
+          IconButton(
+            icon: _logoutIcon,
+            onPressed: () =>
+                context.read<UserLoginSession>().logoutButtonOnPressed(context),
+            tooltip: "Logout",
+          ),
+        ]
       ),
       body: new Column(
         children: <Widget>[

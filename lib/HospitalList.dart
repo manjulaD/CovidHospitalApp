@@ -2,10 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 import 'HospitalDetail.dart';
-import 'LogOut.dart';
+import 'main.dart';
 
 class HospitalList extends StatefulWidget {
   @override
@@ -16,21 +17,29 @@ class HospitalListState extends State<HospitalList> {
   List data = [];
   Icon _logoutIcon = new Icon(Icons.logout);
 
-  Future<String> getData() async {
-    String _subURL = '/dev/hospitals/';
-    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
+  Future<void> getData() async {
+    String _idToken = context.read<UserLoginSession>().idToken;
+    String _usrRole = context.read<UserLoginSession>().userAttrib['custom:role'];
+    print('usrRole: $_usrRole');
 
+    String _subURL = '/dev/hospitals/';
+
+    if (_usrRole == 'COORDINATOR')
+      _subURL = _subURL + context.read<UserLoginSession>().userAttrib['custom:hospitalId'].toString();
+
+    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
     var response = await http.get(_url, headers: {
-      //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
+      "Authorization": _idToken
     });
 
     this.setState(() {
       data = json.decode(response.body);
     });
 
-    print(data[0]["hospitalName"]);
-
-    return "Success!";
+    if (_usrRole == 'COORDINATOR')
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => HospitalDetail(data[0]))
+      );
   }
 
   @override
@@ -46,7 +55,7 @@ class HospitalListState extends State<HospitalList> {
             IconButton(
               icon: _logoutIcon,
               onPressed: () {
-                new LogOut().logoutButtonOnPressed(context);
+                context.read<UserLoginSession>().logoutButtonOnPressed(context);
               },
               tooltip: "Logout",
             ),
