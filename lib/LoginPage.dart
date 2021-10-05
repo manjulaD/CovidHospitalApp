@@ -101,6 +101,8 @@ class LoginPageState extends State<LoginPage> {
         final user = _userController.text.trim();
         final password = _passwordController.text;
 
+        await context.read<AppConfig>().loadAsset();
+
         final response = await Amplify.Auth.signIn(
           username: user,
           password: password,

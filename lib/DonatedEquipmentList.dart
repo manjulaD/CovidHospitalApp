@@ -49,10 +49,18 @@ class DonatedEquipmentState extends State<DonatedEquipmentList> {
   }
 
   Future<List<DonatedEquipment>> getData() async {
-    String _subURL = '/dev/hospitals/${hospitalDetails["hospitalId"]}/donated-instruments';
-    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
+    String _idToken = context.read<UserLoginSession>().idToken;
+    String _usrRole = context.read<UserLoginSession>().userAttrib['custom:role'];
+    print('Inside DonatedEquipmentList: usrRole=$_usrRole');
+
+    String _apiHost = context.read<AppConfig>().properties['apiHost'];
+    String _subURL = '/' + context.read<AppConfig>().properties['apiEnv'] + '/hospitals/';
+    _subURL = _subURL + '${hospitalDetails["hospitalId"]}/donated-instruments';
+
+    print('Inside DonatedEquipmentList: Calling API Host=$_apiHost, subURL=$_subURL');
+    var _url =  Uri.https(_apiHost, _subURL, {});
     var response = await http.get(_url, headers: {
-      //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
+      "Authorization": _idToken
     });
 
     this.setState(() {
@@ -64,7 +72,7 @@ class DonatedEquipmentState extends State<DonatedEquipmentList> {
           data[i]["donatedDate"].toString(), data[i]["status"], data[i]["comments"], data[i]["hospital"], data[i]["donorOrg"]));
     }
     filteredEquipments = equipments;
-    print(data[0]["instrumentName"]);
+    //print(data[0]["instrumentName"]);
 
     return equipments;
   }

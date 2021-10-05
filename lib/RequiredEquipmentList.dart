@@ -49,15 +49,19 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
   }
 
   Future<List<Equipment>> getData() async {
+    String _idToken = context.read<UserLoginSession>().idToken;
+    String _usrRole = context.read<UserLoginSession>().userAttrib['custom:role'];
+    print('Inside ReqInstrumentsList: usrRole=$_usrRole');
 
-    // String _url = 'https://vs0syenr45.execute-api.ap-southeast-1.amazonaws.com/dev/hospitals/' + '${hospitalDetails["hospitalId"]}'+ '/required-instruments';
-    String _subURL = '/dev/hospitals/${hospitalDetails["hospitalId"]}/required-instruments';
-    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
+    String _apiHost = context.read<AppConfig>().properties['apiHost'];
+    String _subURL = '/' + context.read<AppConfig>().properties['apiEnv'] + '/hospitals/';
+    _subURL = _subURL + '${hospitalDetails["hospitalId"]}/required-instruments';
 
+    print('Inside ReqInstrumentsList: Calling API Host=$_apiHost, subURL=$_subURL');
+    var _url =  Uri.https(_apiHost, _subURL, {});
     var response = await http.get(_url, headers: {
-
-      //"Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
-    });
+      "Authorization": _idToken
+      });
 
     this.setState(() {
       data = json.decode(response.body);
@@ -67,7 +71,7 @@ class RequiredEquipmentState extends State<RequiredEquipmentList> {
       equipments.add(new Equipment(data[i]["instrumentName"], data[i]["urgentNeedQuantity"].toString(), data[i]["veryUrgentNeedQuantity"].toString(), data[i]["regularNeedQuantity"].toString(), data[i]["currentAtHandQuantity"].toString(), data[i]["excessQuantity"].toString()));
     }
     filteredEquipments = equipments;
-    print(data[1]["instrumentName"]);
+    //print(data[1]["instrumentName"]);
 
     return equipments;
   }

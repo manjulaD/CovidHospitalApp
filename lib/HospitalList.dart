@@ -20,14 +20,16 @@ class HospitalListState extends State<HospitalList> {
   Future<void> getData() async {
     String _idToken = context.read<UserLoginSession>().idToken;
     String _usrRole = context.read<UserLoginSession>().userAttrib['custom:role'];
-    print('usrRole: $_usrRole');
+    print('Inside HospitalList: usrRole=$_usrRole');
 
-    String _subURL = '/dev/hospitals/';
+    String _apiHost = context.read<AppConfig>().properties['apiHost'];
+    String _subURL = '/' + context.read<AppConfig>().properties['apiEnv'] + '/hospitals/';
 
     if (_usrRole == 'COORDINATOR')
       _subURL = _subURL + context.read<UserLoginSession>().userAttrib['custom:hospitalId'].toString();
 
-    var _url =  Uri.https('vs0syenr45.execute-api.ap-southeast-1.amazonaws.com', _subURL, {});
+    print('Inside HospitalList: Calling API Host=$_apiHost, subURL=$_subURL');
+    var _url =  Uri.https(_apiHost, _subURL, {});
     var response = await http.get(_url, headers: {
       "Authorization": _idToken
     });

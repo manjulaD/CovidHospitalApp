@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 // Amplify Flutter Packages
 import 'package:amplify_flutter/amplify.dart';
@@ -10,15 +12,28 @@ import 'package:provider/provider.dart';
 
 import 'LoginPage.dart';
 
-void main() {
+void main(){
   runApp(
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => UserLoginSession()),
+          Provider(create: (_) =>  new AppConfig()),
         ],
         child: new MaterialApp(home: new LoginPage()),
       )
   );
+}
+
+class AppConfig {
+  Map<String, dynamic> _properties = {};
+
+  Map<String, dynamic> get properties => _properties;
+
+  Future<void> loadAsset() async {
+    var fileContents =  await rootBundle.loadString('assets/config/app_settings.json');
+    //print('fileContents : $fileContents');
+    _properties =  json.decode(fileContents);
+  }
 }
 
 class UserLoginSession with ChangeNotifier {
