@@ -14,13 +14,43 @@ class HospitalList extends StatefulWidget {
 }
 
 class HospitalListState extends State<HospitalList> {
-  List data = [];
+  List _hospitalList = [];
+  //for search bar
+  final TextEditingController _filter = new TextEditingController();
+  String _searchText = "";
+  List _filteredHospitals = [];
+  Icon _searchIcon = new Icon(Icons.search);
+
   Icon _logoutIcon = new Icon(Icons.logout);
+
+  Widget _appBarTitle = new Text('Hospital List');
+
+  HospitalListState() {
+    _filter.addListener(() {
+      if (_filter.text.isEmpty) {
+        setState(() {
+          _searchText = "";
+          _filteredHospitals = _hospitalList;
+        });
+      } else {
+        setState(() {
+          _searchText = _filter.text;
+
+          List _tempList = [];
+          for (int i = 0; i < _hospitalList.length; i++) {
+            if (_hospitalList[i]["hospitalName"].toLowerCase().contains(_searchText.toLowerCase())) {
+              _tempList.add(_hospitalList[i]);
+            }
+          }
+          _filteredHospitals = _tempList;
+        });
+      }
+    });
+  }
 
   Future<void> getData() async {
     String _idToken = context.read<UserLoginSession>().idToken;
     String _usrRole = context.read<UserLoginSession>().userAttrib['custom:role'];
-    print('Inside HospitalList: usrRole=$_usrRole');
 
     String _apiHost = context.read<AppConfig>().properties['apiHost'];
     String _subURL = '/' + context.read<AppConfig>().properties['apiEnv'] + '/hospitals/';
@@ -35,12 +65,13 @@ class HospitalListState extends State<HospitalList> {
     });
 
     this.setState(() {
-      data = json.decode(response.body);
+      _hospitalList = json.decode(response.body);
+      _filteredHospitals = _hospitalList;
     });
 
     if (_usrRole == 'COORDINATOR')
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => HospitalDetail(data[0]))
+          MaterialPageRoute(builder: (context) => HospitalDetail(_filteredHospitals[0]))
       );
   }
 
@@ -49,11 +80,35 @@ class HospitalListState extends State<HospitalList> {
     this.getData();
   }
 
+  void _searchPressed() {
+    setState(() {
+      if (this._searchIcon.icon == Icons.search) {
+        this._searchIcon = new Icon(Icons.close);
+        this._appBarTitle = new TextField(
+          controller: _filter,
+          decoration: new InputDecoration(prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
+        );
+      } else {
+        this._searchIcon = new Icon(Icons.search);
+        this._appBarTitle = new Text('Hospital List');
+        _filteredHospitals = _hospitalList;
+        _filter.clear();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
           actions: <Widget>[
+            IconButton(
+              icon: _searchIcon,
+              onPressed: () {
+                this._searchPressed();
+              },
+              tooltip: "Search",
+            ),
             IconButton(
               icon: _logoutIcon,
               onPressed: () {
@@ -62,10 +117,12 @@ class HospitalListState extends State<HospitalList> {
               tooltip: "Logout",
             ),
           ],
-          title: new Text("Hospital List"),
+          title: _appBarTitle,
+          centerTitle: true,
+          elevation: 0,
           backgroundColor: Colors.blue),
       body: new ListView.builder(
-        itemCount: data == null ? 0 : data.length,
+        itemCount: _filteredHospitals == null ? 0 : _filteredHospitals.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             shape: RoundedRectangleBorder(
@@ -76,17 +133,15 @@ class HospitalListState extends State<HospitalList> {
               ),
             ),
             child: GestureDetector(
-              child: new Text(data[index]["hospitalName"]),
+              child: new Text(_filteredHospitals[index]["hospitalName"]),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HospitalDetail(data[index])),
+                  MaterialPageRoute(builder: (context) => HospitalDetail(_filteredHospitals[index])),
                 );
               },
             ),
           );
-
-          //  );
         },
       ),
     );
